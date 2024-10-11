@@ -2,32 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Post from "./components/post/Post.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const posts = [
+    { id: 1, title: 'Hello World', body: 'Welcome to learning React!' },
+    { id: 2, title: 'Installation', body: 'You can install React from npm.' },
+    { id: 3, title: 'JSX', body: 'JSX is a syntax extension for JavaScript.' },
+  ]
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>ETH Overflow</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <div className="flex gap-3 flex-col">
+          {
+            posts.map((post) => <Post post={post} />)
+          }
+        </div>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
