@@ -1,5 +1,5 @@
 import Question from "../post/question.jsx";
-import Ratings from "../ratings.jsx";
+import Ratings from "../ratings/ratings.jsx";
 import {Avatar, AvatarFallback} from "../avatar/avatar.tsx";
 
 

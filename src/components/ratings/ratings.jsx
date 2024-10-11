@@ -19,9 +19,9 @@ const Ratings = ({ rating, direction }) => {
     else {
         return (
             <div className="flex flex-col items-center justify-start">
-                <ArrowUp className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" />
+                <ArrowUp className="text-primary-foreground hover:text-indigo-300 hover:cursor-pointer" />
                 <p className="font-bold text-lg">{rating || 0}</p>
-                <ArrowDown className="text-gray-400 hover:text-red-400 hover:cursor-pointer"/>
+                <ArrowDown className="text-primary-foreground hover:text-red-400 hover:cursor-pointer"/>
             </div>
         )
     }
