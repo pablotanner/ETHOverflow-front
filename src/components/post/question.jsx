@@ -11,11 +11,11 @@ const Question = ({ question }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-gray-100 border-blue-500 rounded-lg p-3 text-black flex flex-col relative" onClick={() => navigate("/questions/1")}>
+        <div className="bg-gray-100 border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative" onClick={() => navigate("/questions/1")}>
             <h1 className="font-semibold">{question?.title}</h1>
             <p className="text-gray-400 text-sm">{question?.user}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
-            <div className="flex items-center"
+            <div className="flex gap-2"
                  onClick={() => navigate(`/questions/${post?.id}`)}
             >
                 <Ratings rating={question?.rating}/>
@@ -23,7 +23,8 @@ const Question = ({ question }) => {
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <DotsVerticalIcon className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-1 right-1"/>
+                        <DotsVerticalIcon
+                            className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-1 right-1"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem>
