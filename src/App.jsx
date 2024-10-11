@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Post from "./components/post/Post.jsx";
+import {Button} from "./components/button/button.tsx";
 
 function App() {
 
@@ -21,7 +19,9 @@ function App() {
             posts.map((post) => <Post post={post} />)
           }
         </div>
-
+          <Button >
+              Click Me
+          </Button>
       </div>
     </>
   )
