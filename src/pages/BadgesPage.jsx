@@ -1,5 +1,6 @@
 import {Avatar, AvatarFallback} from "../components/avatar/avatar.tsx";
 import {Progress} from "../components/progress/progress.tsx";
+import {CardBody, CardContainer, CardItem} from "../components/card/3d-card.jsx";
 
 
 const BadgesPage = () => {
@@ -7,23 +8,51 @@ const BadgesPage = () => {
     const BadgeItem = ({title, description, icon, progress}) => {
 
         return (
-            <div className="p-6 border border-border rounded-lg shadow-lg flex flex-col gap-4 items-center min-w-56 h-80 flex-1">
-                <div className="w-36 h-36 text-[50px] bg-gray-100 rounded-full flex items-center justify-center">
-                    {icon}
-                </div>
-                <div className="flex flex-col gap-2 text-center">
-                    <h4 className="font-semibold text-lg">{title}</h4>
-                    <p className="text-md">{description}</p>
-                </div>
-                <div className="flex items-center gap-2 w-full">
-                    <div className="flex flex-col gap-4 items-center justify-center w-full">
-                        <Progress value={progress}/>
-                        <div className="text-md text-gray-900 font-semibold">{progress}%</div>
-                    </div>
+            <CardContainer className="flex min-w-56 flex-1 h-56">
+                <CardBody className="bg-white/90 relative backdrop-blur-xl group/card border-black/[0.1] justify-center items-center text-center  rounded-xl p-6 border">
+                    <CardItem
+                        translateZ="50"
+                        className="text-xl font-bold text-neutral-600 w-full"
+                    >
+                        {title}
+                    </CardItem>
+                    <CardItem
+                        as="p"
+                        translateZ="60"
+                        className="text-neutral-500 text-sm max-w-sm mt-2 w-full"
+                    >
+                        {description}
+                    </CardItem>
+                    <CardItem
+                        translateZ="100"
+                        rotateX={20}
+                        rotateZ={-10}
+                        className="w-full mt-4 flex justify-center items-center"
+                    >
+                        <div
+                            className="w-36 h-36 text-[50px] rounded-full flex items-center justify-center bg-indigo-100/60 ">
+                            {icon}
+                        </div>
+                    </CardItem>
+                    <div className="flex justify-between flex-col items-center mt-6">
+                        <CardItem
 
-                </div>
-            </div>
+                            as="button"
+                            className="px-4 py-2 rounded-xl text-xs font-normal w-full"
+                        >
+                            <Progress value={progress}/>
+                        </CardItem>
+                        <CardItem
+                            as="button"
+                            className="px-3 py-2 rounded-xl border-2 border-emerald-500 text-emerald-900 text-xs font-bold"
+                        >
+                            {progress}%
+                        </CardItem>
+                    </div>
+                </CardBody>
+            </CardContainer>
         )
+
     }
 
     const badges = [
