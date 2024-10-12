@@ -127,7 +127,15 @@ const QuestionPage = () => {
 
 
                 {
-                    question?.answers_list?.map((answer) => (
+                    question?.answers_list?.sort((a,b) => {
+                        if (sort === 'rating') {
+                            return b.rating - a.rating
+                        } else if (sort === 'oldest') {
+                            return new Date(a.date_answered) - new Date(b.date_answered)
+                        } else {
+                            return new Date(b.date_answered) - new Date(a.date_answered)
+                        }
+                    }).map((answer) => (
                         <>
                             <Answer answer={answer} question={question} comments={answer?.comments_list}/>
 
