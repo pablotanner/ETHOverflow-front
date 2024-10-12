@@ -51,7 +51,7 @@ const Question = ({ question }) => {
             <div className="flex gap-2">
                 <Ratings rating={question?.reputation}/>
                 <div
-                    dangerouslySetInnerHTML={createMarkup(question?.content)}/>
+                    dangerouslySetInnerHTML={question?.content}/>
 
 
                 <DropdownMenu>

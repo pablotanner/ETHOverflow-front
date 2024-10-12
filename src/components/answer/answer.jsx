@@ -42,7 +42,7 @@ const Answer = ({ answer, question, comments }) => {
             </div>
 
             <div className="flex items-center text-sm ml-7"
-                dangerouslySetInnerHTML={createMarkup(question?.content)}/>
+                dangerouslySetInnerHTML={question?.content}/>
 
 
             <div className="flex flex-row items-center gap-4">
