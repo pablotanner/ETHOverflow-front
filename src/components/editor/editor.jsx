@@ -1,11 +1,11 @@
 import katex from 'katex';
-import 'katex/dist/katex.min.css';
 
 import ReactQuill from "react-quill";
 
 window.katex = katex;
 
-import 'katex/dist/katex.min.css';
+import 'react-quill/dist/quill.snow.css';
+
 import {useEffect, useRef} from "react";
 
 const formula = () => {
