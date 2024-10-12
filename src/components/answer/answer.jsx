@@ -1,4 +1,3 @@
-import Question from "../question/question.jsx";
 import Ratings from "../ratings/ratings.jsx";
 import {Avatar, AvatarFallback} from "../avatar/avatar.tsx";
 import Comment from "../comment/comment.jsx";
