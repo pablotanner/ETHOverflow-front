@@ -26,6 +26,9 @@ const BadgesPage = () => {
     console.log(user)
 
 
+    const reputation = user?.reputation || 0;
+    const total_answers = user?.total_answers || 0;
+
 
     const BadgeItem = ({title, description, icon, progress}) => {
 
@@ -77,33 +80,67 @@ const BadgesPage = () => {
 
     }
 
+    const calculateProgress = (total, required) => {
+        let progress = (total / required) * 100;
+        return progress > 100 ? 100 : progress;
+    }
+
     const badges = [
         {
             title: 'Beginner',
             description: 'You have answered 1 question',
             icon: '🎓',
-            progress: 100
+            progress: calculateProgress(total_answers, 1)
         },
         {
             title: 'Intermediate',
             description: 'You have answered 5 questions',
             icon: '🏆',
-            progress: 90
+            progress: calculateProgress(total_answers, 5)
         },
         {
             title: 'Advanced',
             description: 'You have answered 15 questions',
             icon: '🚀',
-            progress: 50
+            progress: calculateProgress(total_answers, 15)
         },
         {
             title: 'Expert',
             description: 'You have answered 30 questions',
             icon: '🔥',
-            progress: 15
+            progress: calculateProgress(total_answers, 30)
+        },
+        {
+            title: 'Reputation Beginner',
+            description: 'You have earned 10 Reputation',
+            icon: '🌟',
+            progress: calculateProgress(reputation, 10)
+        },
+        {
+            title: 'Reputation Intermediate',
+            description: 'You have earned 50 Reputation',
+            icon: '💫',
+            progress: calculateProgress(reputation, 50)
+        },
+        {
+            title: 'Reputation Advanced',
+            description: 'You have earned 100 Reputation',
+            icon: '🌠',
+            progress: calculateProgress(reputation, 100)
+        },
+        {
+            title: 'Reputation Expert',
+            description: 'You have earned 200 Reputation',
+            icon: '🌌',
+            progress: calculateProgress(reputation, 200)
         }
     ]
 
+    badges.sort((a, b) => {
+        if (a.progress === 100) return 1;
+        if (b.progress === 100) return -1;
+        return Math.abs(100 - a.progress) - Math.abs(100 - b.progress);
+    });
 
 
     return (
