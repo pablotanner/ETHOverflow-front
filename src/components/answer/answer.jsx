@@ -30,7 +30,6 @@ const Answer = ({ answer, question, comments }) => {
 
 
     // Check that user is owner of the question
-    const isQuestionOwner = user?.email === question?.created_by;
 
     const {
         data: user,
@@ -39,6 +38,7 @@ const Answer = ({ answer, question, comments }) => {
     const [answerContent, setAnswerContent] = useState(answer?.content)
 
     const [markAnswer, {isLoading: isMarkAnswerLoading}] = useMarkAnswerMutation()
+    const isQuestionOwner = user?.email === question?.created_by;
 
     const isOwner = user?.email === answer?.created_by;
 
