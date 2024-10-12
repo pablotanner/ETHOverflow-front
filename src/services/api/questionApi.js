@@ -141,10 +141,41 @@ export const questionsApi = authApi.injectEndpoints({
             // Invalidate question with id when a comment is created
             invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
         }),
+        deleteQuestion: build.mutation({
+            query: (question_id) => ({
+                url: `/questions/${data.question_id}`,
+                method: 'DELETE',
+
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                toast({
+                    title: "Deleting Question...",
+                    variant: "loading",
+                })
+                queryFulfilled
+                    .then(() => {
+                        toast({
+                            title: "Success",
+                            description: "Question deleted successfully.",
+                            variant: "success",
+                        });
+                    })
+                    .catch(() => {
+
+                        toast({
+                            title: "Uh oh! Something went wrong.",
+                            description: "There was a problem with your request.",
+                            variant: "error",
+                        });
+                    })
+            },
+            // Invalidate question with id when a comment is created
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+        }),
     }),
     overrideExisting: false,
 })
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
-    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation
+    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation
 } = questionsApi;

@@ -6,6 +6,8 @@ import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
+import {useDeleteQuestionMutation} from "../../services/api/questionApi.js";
+import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 
 
 
@@ -15,7 +17,15 @@ const Question = ({ question }) => {
 
     const location = useLocation();
 
+    const [deleteQuestion, {isLoading}] = useDeleteQuestionMutation();
 
+    const {
+        data: user,
+    } = useGetUserActivityQuery();
+
+    console.log(user, question)
+
+    const isOwner = user?.email === question?.created_by;
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -52,16 +62,27 @@ const Question = ({ question }) => {
                     }}/>
 
 
-                <DropdownMenu>
+                <DropdownMenu >
                     <DropdownMenuTrigger asChild>
                         <DotsVerticalIcon
-                            className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-1 right-1"/>
+                            className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-4 right-4"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem>
                             Edit
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => {
+                                deleteQuestion(question?.id).then((res) => {
+                                    if (res.error) {
+                                        console.log(res.error)
+                                    } else{
+                                        navigate("/")
+                                    }
+                                })
+
+                            }}
+                        >
                             Delete
                         </DropdownMenuItem>
                     </DropdownMenuContent>
