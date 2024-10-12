@@ -31,7 +31,7 @@ const Navbar = () => {
                 <Input className="h-8 pl-8"/>
             </div>
 
-            <MenuItem link={"/login"}>Login</MenuItem>
+            <MenuItem link={"/badges"}>Badges</MenuItem>
             <MenuItem link={"/account"}>Account</MenuItem>
         </nav>
     )

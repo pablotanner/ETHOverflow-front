@@ -6,6 +6,7 @@ import FallbackPage from "./pages/FallbackPage.jsx";
 import CreateQuestionPage from "./pages/CreateQuestionPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import CoursesPage from "./pages/CoursesPage.jsx";
+import BadgesPage from "./pages/BadgesPage.jsx";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                   <Route path="/questions/:id" element={<QuestionPage/>}/>
                   <Route path="/about" element={<AboutPage/>}/>
                   <Route path="/courses" element={<CoursesPage/>}/>
+                  <Route path="/badges" element={<BadgesPage/>}/>
               </Routes>
           </div>
       </BrowserRouter>
