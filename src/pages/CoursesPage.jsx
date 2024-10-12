@@ -36,7 +36,7 @@ const CoursesPage = () => {
                         <tr key={index} className="hover:bg-gray-100">
                             <td className="border-b p-2">{dept.name}</td>
                             <td className="border-b p-2">
-                                <Badge >
+                                <Badge variant={"secondary"}>
                                     {dept.abbrev}
                                 </Badge>
 

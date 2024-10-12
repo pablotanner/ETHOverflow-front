@@ -46,9 +46,16 @@ const Question = ({ question }) => {
 
     return (
         <div
-            className="bg-slate-900
+            data-page={location.pathname === "/questions/" + question?.id}
+            className="bg-slate-900 data-[page='true']:hover:bg-slate-800
             text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
+            onClick={() => {
+                if (location.pathname !== "/questions/" + question?.id) {
+                    navigate("/questions/" + question?.id)
+                }
+            }}
             >
+
             <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
 
                 <ExternalLink className="text-white hover:cursor-pointer hover:text-gray-200"

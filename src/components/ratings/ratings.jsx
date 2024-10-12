@@ -73,7 +73,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
             </div>
         );
     } else {
-        const isUpVoted = userVoteType === 1 ||  question?.user_vote_type === 1;
+        const isUpVoted = userVoteType === 1;
 
         const isDownVoted = userVoteType === -1;
 
