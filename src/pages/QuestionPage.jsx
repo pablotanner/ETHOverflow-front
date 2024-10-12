@@ -55,9 +55,15 @@ const QuestionPage = () => {
 
             <Question question={question}/>
 
+            <div className="h-[1px] w-full bg-gray-200"/>
+
+            {question?.comments_of_questions_list.map((comment) => (
+            <Comment comment={comment}/>
+            ))}
+
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex justify-between">
-                    {question?.answers?.length || 0} Answers
+                    {question?.answers_list?.length || 0} Answers
                     <div className="flex flex-row gap-4 items-center">
                         Sort by:
                         <Tabs value={sort}>
@@ -72,9 +78,7 @@ const QuestionPage = () => {
 
 
                 <div className="h-[1px] w-full bg-gray-200"/>
-                {question?.comments_of_questions_list.map((comment) => (
-                    <Comment comment={comment}/>
-                ))}
+
 
                 {
                     question?.answers_list?.map((answer) => (

@@ -17,7 +17,7 @@ const Answer = ({ answer, comments }) => {
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
                     <AvatarFallback>
-                        <p>{answer?.user || "?"}</p>
+                        <p>{answer?.creator[0] || "?"}</p>
                     </AvatarFallback>
                 </Avatar>
                 <p className="text-gray-500 text-xs">{answer?.created_by}</p>
