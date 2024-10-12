@@ -11,14 +11,14 @@ export const questionsApi = authApi.injectEndpoints({
                 url: `/questions/${id}`,
                 method: 'GET',
             }),
-            providesTags: (result, error, id) => [{ type: 'Payment', id }],
+            providesTags: (result, error, id) => [{ type: 'Question', id }],
         }),
         getQuestions: build.query({
             query: () => ({
                 url: `/questions`,
                 method: 'GET',
             }),
-            providesTags: ['questions']
+            providesTags: ['Questions']
         }),
         createQuestion: build.mutation({
             query: (body) => ({

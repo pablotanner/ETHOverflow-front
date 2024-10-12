@@ -9,7 +9,10 @@ const Navbar = () => {
 
     const prefetchQuestions = usePrefetch('getQuestions');
 
+    const prefetchUser = usePrefetch('getUserActivity');
+
     prefetchQuestions();
+    prefetchUser();
 
 
     const MenuItem = ({children, link}) => {
