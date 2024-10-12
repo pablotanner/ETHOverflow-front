@@ -46,7 +46,7 @@ const AboutPage = () => {
                             <Gameboard/>
                             <PieceQueue/>
                         </div>
-                        <div className="bg-slate-200 font-semibold p-2">
+                        <div className="bg-slate-900 text-white font-semibold p-2">
                             <p>Points: {points}</p>
                             <p>Lines Cleared: {linesCleared}</p>
                             {state === 'LOST' && (
