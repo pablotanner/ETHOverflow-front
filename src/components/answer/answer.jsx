@@ -69,7 +69,7 @@ const Answer = ({ answer, question, comments }) => {
                             <div className="space-y-1">
                                 <h4 className="text-sm font-semibold">{answer?.creator?.display_name}</h4>
                                 <p className="text-sm">
-                                    {answer?.creator?.email} - {answer?.creator?.reputation} Reputation
+                                    Reputation: {answer?.creator?.reputation}
                                 </p>
                                 <div className="flex items-center pt-2">
                                     <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
