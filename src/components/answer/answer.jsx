@@ -17,6 +17,7 @@ import {useCreateCommentMutation, useEditAnswerMutation} from "../../services/ap
 import Editor from "../editor/editor.jsx";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "../card/hover-card.tsx";
+import {CalendarDays} from "lucide-react";
 
 
 const Answer = ({ answer, question, comments }) => {
