@@ -16,7 +16,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
     const [sendVoteAnswer] = useCreateAnswerVoteMutation();
 
     const [currentRating, setCurrentRating] = useState(rating);
-    const [userVoteType, setUserVoteType] = useState((answer ? answer?.user_vote_type : question?.vote_type) || 0);
+    const [userVoteType, setUserVoteType] = useState((answer ? answer?.user_vote_type : question?.user_vote_type) || 0);
 
 
     const handleVoteAnswer = async (voteType) => {
