@@ -33,18 +33,20 @@ const Question = ({ question }) => {
             <div className="h-[1px] bg-gray-300 w-full"/>
 
             <div className="bottom-3 right-3 absolute flex gap-2">
-                {question?.tags?.length && question?.tags?.map((tag) => (
+                {question?.tags?.length ? question?.tags?.map((tag) => (
                     <Badge variant="secondary">
                         {tag}
                     </Badge>
-                ))}
+                )) : null}
             </div>
 
             <div className="flex gap-2"
                  onClick={() => navigate(`/questions/${question?.id}`)}
             >
                 <Ratings rating={question?.reputation}/>
-                <div dangerouslySetInnerHTML={createMarkup(question?.content)}/>
+                <div
+                    className="max-h-36 overflow-hidden text-ellipsis"
+                    dangerouslySetInnerHTML={createMarkup(question?.content)}/>
 
 
                 <DropdownMenu>
