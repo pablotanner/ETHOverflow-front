@@ -5,7 +5,12 @@ import {TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.tsx";
 import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
-import {useCreateAnswerMutation, useCreateCommentMutation, useGetQuestionQuery} from "../services/api/questionApi.js";
+import {
+    createCommentToQuestion,
+    useCreateAnswerMutation,
+    useCreateCommentMutation,
+    useGetQuestionQuery
+} from "../services/api/questionApi.js";
 import Comment from "../components/comment/comment.jsx";
 import Spinner from "../components/spinner/spinner.jsx";
 import {
@@ -35,7 +40,7 @@ const QuestionPage = () => {
         isError: isQuestionError
    } = useGetQuestionQuery(id);
 
-    const [createComment] = useCreateCommentMutation()
+    const [createComment] = createCommentToQuestion()
     const [createAnswer] = useCreateAnswerMutation()
 
     const [sort, setSort] = useState('rating');

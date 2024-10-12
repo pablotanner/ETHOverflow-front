@@ -51,7 +51,7 @@ export const questionsApi = authApi.injectEndpoints({
         }),
         createCommentToQuestion: build.mutation({
             query: (data) => ({
-                url: `/questions/${data.question_id}/answers/${data.answer_id}/comments`,
+                url: `/questions/${data.question_id}/comments`,
                 method: 'POST',
                 body: data.body
             }),
@@ -146,5 +146,5 @@ export const questionsApi = authApi.injectEndpoints({
 })
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
-    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation
+    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, createCommentToQuestion
 } = questionsApi;
