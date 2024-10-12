@@ -2,11 +2,19 @@ import {Button} from "../components/button/button.tsx";
 import Question from "../components/post/question.jsx";
 import {useNavigate} from "react-router-dom";
 import {useToast} from "../components/toast/use-toast.tsx";
+import {useGetQuestionsQuery} from "../services/api/questionApi.js";
 const HomePage = () => {
     const {toast} = useToast()
 
 
+    const {
+        data: questions,
+        isLoading: isQuestionsLoading
+    } = useGetQuestionsQuery();
 
+    if (isQuestionsLoading) {
+        return <div>Loading...</div>
+    }
 
 
     const navigate = useNavigate()
@@ -27,6 +35,13 @@ const HomePage = () => {
             >
                 Show Toast
             </Button>
+
+            {
+                questions?.map((question) => (
+                    <Question key={question.id} question={question}/>
+                ))
+            }
+
 
             <div className="flex flex-col  text-lg">
                 New Question
