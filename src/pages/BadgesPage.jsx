@@ -29,7 +29,7 @@ const BadgesPage = () => {
 
         return (
             <GlareCard>
-                    <div className="relative justify-center items-center text-center  rounded-xl p-6 border">
+                    <div className="relative justify-center items-center text-center  rounded-xl p-6">
                         <div
                             className="text-xl font-bold text-white w-full"
                         >
@@ -69,6 +69,7 @@ const BadgesPage = () => {
     }
 
     const calculateProgress = (total, required) => {
+        if (total <= 0) return 0;
         let progress = (total / required) * 100;
         return progress > 100 ? 100 : progress;
     }
