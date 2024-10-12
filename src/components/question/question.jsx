@@ -62,7 +62,7 @@ const Question = ({ question }) => {
                     }}/>
 
 
-                <DropdownMenu >
+                <DropdownMenu hidden={!isOwner}>
                     <DropdownMenuTrigger asChild>
                         <DotsVerticalIcon
                             className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-4 right-4"/>
