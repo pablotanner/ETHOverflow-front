@@ -1,9 +1,8 @@
 import katex from 'katex';
+window.katex = katex;
+import "katex/dist/katex.css";
 
 import ReactQuill from "react-quill";
-
-window.katex = katex;
-
 import 'react-quill/dist/quill.snow.css';
 
 import {useEffect, useRef} from "react";
@@ -27,6 +26,8 @@ const Editor = ({value, setValue}) => {
             theme="snow"
             value={value}
             onChange={setValue}
+            ref={quillRef}
+            id="editor"
 
             modules={{
                 formula: true,
