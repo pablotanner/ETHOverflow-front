@@ -11,6 +11,11 @@ const Question = ({ question }) => {
 
     const navigate = useNavigate();
 
+    const createMarkup = (html) => {
+        return  {
+            __html: DOMPurify.sanitize(html)
+        }
+    }
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -38,7 +43,7 @@ const Question = ({ question }) => {
                  onClick={() => navigate(`/questions/${post?.id}`)}
             >
                 <Ratings rating={question?.reputation}/>
-                <p className="text-sm">{question?.content}</p>
+                <div dangerouslySetInnerHTML={createMarkup(post?.content)}/>
 
 
                 <DropdownMenu>
