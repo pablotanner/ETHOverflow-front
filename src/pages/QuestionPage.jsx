@@ -47,6 +47,8 @@ const QuestionPage = () => {
         return <Spinner/>
     }
 
+    console.log(question)
+
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
             <Button variant="outline" className="w-24 items-center gap-2" onClick={() =>
