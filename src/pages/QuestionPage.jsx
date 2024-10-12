@@ -127,7 +127,7 @@ const QuestionPage = () => {
 
 
                 {
-                    question?.answers_list?.sort((a,b) => {
+                    [...question?.answers_list]?.sort((a,b) => {
                         if (sort === 'rating') {
                             return b.rating - a.rating
                         } else if (sort === 'oldest') {
