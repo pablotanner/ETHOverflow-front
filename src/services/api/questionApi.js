@@ -146,5 +146,5 @@ export const questionsApi = authApi.injectEndpoints({
 })
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
-    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, createCommentToQuestion
+    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation
 } = questionsApi;

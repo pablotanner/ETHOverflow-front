@@ -6,9 +6,7 @@ import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
 import {
-    createCommentToQuestion,
-    useCreateAnswerMutation,
-    useCreateCommentMutation,
+    useCreateAnswerMutation, useCreateCommentToQuestionMutation,
     useGetQuestionQuery
 } from "../services/api/questionApi.js";
 import Comment from "../components/comment/comment.jsx";
@@ -40,7 +38,7 @@ const QuestionPage = () => {
         isError: isQuestionError
    } = useGetQuestionQuery(id);
 
-    const [createComment] = createCommentToQuestion()
+    const [createComment] = useCreateCommentToQuestionMutation()
     const [createAnswer] = useCreateAnswerMutation()
 
     const [sort, setSort] = useState('rating');
