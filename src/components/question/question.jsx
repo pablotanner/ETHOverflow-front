@@ -45,7 +45,6 @@ const Question = ({ question }) => {
             >
                 <Ratings rating={question?.reputation}/>
                 <div
-                    className="max-h-36 overflow-hidden text-ellipsis"
                     dangerouslySetInnerHTML={createMarkup(question?.content)}/>
 
 
