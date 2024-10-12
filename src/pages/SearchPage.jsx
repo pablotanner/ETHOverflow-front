@@ -11,7 +11,7 @@ const SearchPage = () => {
     const {
         data: questions,
         isLoading,
-        isError: isQuestionsError
+        error: questionsError
     } = useGetQuestionSearchQuery(query);
 
 
@@ -25,21 +25,17 @@ const SearchPage = () => {
             </h1>
 
             <div className="flex flex-col gap-6 mt-4 w-full" >
-                {!isQuestionsError &&
+                {!questionsError &&
                     questions?.map((question) => (
                         <Question key={question?.id} question={question}/>
                     ))
                 }
 
                 {
-                    !questions?.length && !isQuestionsError && <div className="text-gray-500">
+                    !questions?.length || !isQuestionsError && <div className="text-gray-500">
                         Did not find any questions for {query}
                     </div>
 
-                }
-
-                {
-                    isQuestionsError && <div className="text-red-500">Something went wrong</div>
                 }
 
 
