@@ -29,7 +29,7 @@ const Question = ({ question }) => {
             onClick={() => navigate("/questions/" + question?.id)}>
             <h1 className="font-semibold">{question?.title}</h1>
             <p className="text-primary-foreground text-sm">by {question?.created_by}</p>
-            <p className="text-primary-foreground text-sm">{formatDate(question?.date_asked)}</p>
+            <p className="text-primary-foreground text-sm">on {formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
 
             <div className="bottom-3 right-3 absolute flex gap-2 overflow-auto">

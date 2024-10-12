@@ -6,6 +6,7 @@ import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
 import {useGetQuestionQuery} from "../services/api/questionApi.js";
+import Comment from "../components/comment/comment.jsx";
 
 
 const QuestionPage = () => {
@@ -56,7 +57,7 @@ const QuestionPage = () => {
 
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex justify-between">
-                    {question?.answers?.length} Answers
+                    {question?.answers?.length || 0} Answers
                     <div className="flex flex-row gap-4 items-center">
                         Sort by:
                         <Tabs value={sort}>
@@ -71,10 +72,14 @@ const QuestionPage = () => {
 
 
                 <div className="h-[1px] w-full bg-gray-200"/>
+                {questions?.comments_of_questions_list.map((comment) => (
+                    <Comment comment={comment}/>
+                ))}
+
                 {
-                    question?.answers?.map((answer) => (
+                    question?.answers_list?.map((answer) => (
                         <>
-                            <Answer answer={answer} comments={comments}/>
+                            <Answer answer={answer} comments={answers?.comments_list}/>
 
                             <div className="h-[1px] w-full bg-gray-200"/>
                         </>
