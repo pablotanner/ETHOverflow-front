@@ -12,12 +12,12 @@ const HomePage = () => {
         isLoading: isQuestionsLoading
     } = useGetQuestionsQuery();
 
-    console.log(questions);
 
     if (isQuestionsLoading) {
         return <div>Loading...</div>
     }
 
+    console.log(questions);
 
     const navigate = useNavigate()
     return (
