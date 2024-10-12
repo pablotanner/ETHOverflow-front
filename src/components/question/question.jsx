@@ -71,7 +71,9 @@ const Question = ({ question }) => {
 
                 {
                     isEditing ?
-                        <Editor value={questionContent} onChange={(value) => setQuestionContent(value)}/>
+                        <Editor value={questionContent} setValue={
+                            (content) => setQuestionContent(content)
+                        }/>
                         :
                         <div
                             dangerouslySetInnerHTML={{
