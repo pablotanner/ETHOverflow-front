@@ -8,6 +8,7 @@ import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
 import {useCreateQuestionVoteMutation, useDeleteQuestionMutation} from "../../services/api/questionApi.js";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
+import {toast} from "../toast/use-toast.tsx";
 
 
 
@@ -62,16 +63,21 @@ const Question = ({ question }) => {
                     }}/>
 
 
-                <DropdownMenu hidden={!isOwner}>
+                <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <DotsVerticalIcon hidden={!isOwner}
+                        <DotsVerticalIcon
                             className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-4 right-4"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem hidden={!isOwner} onClick={() => {
+                            toast()
+                        }}>
+                            Report
+                        </DropdownMenuItem>
+                        <DropdownMenuItem hidden={!isOwner}>
                             Edit
                         </DropdownMenuItem>
-                        <DropdownMenuItem
+                        <DropdownMenuItem hidden={!isOwner}
                             onClick={() => {
                                 deleteQuestion(question?.id).then((res) => {
                                     if (res.error) {
