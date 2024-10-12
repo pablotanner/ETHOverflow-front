@@ -12,7 +12,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
 
     const [sendVoteAnswer] = useCreateAnswerVoteMutation();
 
-
+    console.log(answer.id)
     if (direction === 'horizontal') {
         return (
             <div className="flex items-center justify-start gap-[2px]">
