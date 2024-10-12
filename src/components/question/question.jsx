@@ -66,12 +66,12 @@ const Question = ({ question }) => {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <DotsVerticalIcon
-                            className="text-gray-400 hover:cursor-pointer hover:text-gray-600 absolute top-4 right-4"/>
+                            className="text-white hover:cursor-pointer hover:text-gray-200 absolute top-4 right-4"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem hidden={!isOwner} onClick={() => {
                             toast({
-                                title: "Your Report has been submitted to someone who cares",
+                                title: "Your report has been submitted to someone who cares",
                                 variant: "success",
                             })
                         }}>
