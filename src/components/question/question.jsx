@@ -7,11 +7,7 @@ import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
 
-export const createMarkup = (html) => {
-    return  {
-        __html: DOMPurify.sanitize(html)
-    }
-}
+
 
 const Question = ({ question }) => {
 
@@ -51,7 +47,9 @@ const Question = ({ question }) => {
             <div className="flex gap-2">
                 <Ratings rating={question?.reputation}/>
                 <div
-                    dangerouslySetInnerHTML={question?.content}/>
+                    dangerouslySetInnerHTML={{
+                        __html:question?.content
+                    }}/>
 
 
                 <DropdownMenu>

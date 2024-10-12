@@ -14,7 +14,6 @@ import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
 import {useCreateCommentMutation} from "../../services/api/questionApi.js";
-import {createMarkup} from "../question/question.jsx";
 
 
 const Answer = ({ answer, question, comments }) => {
@@ -42,7 +41,11 @@ const Answer = ({ answer, question, comments }) => {
             </div>
 
             <div className="flex items-center text-sm ml-7"
-                dangerouslySetInnerHTML={question?.content}/>
+                dangerouslySetInnerHTML={
+                    {
+                        __html:answer?.content
+                    }
+                }/>
 
 
             <div className="flex flex-row items-center gap-4">
