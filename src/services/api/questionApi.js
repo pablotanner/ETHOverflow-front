@@ -49,6 +49,36 @@ export const questionsApi = authApi.injectEndpoints({
             },
             invalidatesTags: ['Questions', 'User']
         }),
+        createCommentToQuestion: build.mutation({
+            query: ({body, question_id, answer_id}) => ({
+                url: `/questions/${question_id}/answers/${answer_id}/comments`,
+                method: 'POST',
+                body
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                toast({
+                    title: "Adding Comment...",
+                    variant: "loading",
+                })
+                queryFulfilled
+                    .then(() => {
+                        toast({
+                            title: "Success",
+                            description: "Comment created successfully.",
+                            variant: "success",
+                        });
+                    })
+                    .catch(() => {
+                        toast({
+                            title: "Uh oh! Something went wrong.",
+                            description: "There was a problem with your request.",
+                            variant: "error",
+                        });
+                    })
+            },
+            // Invalidate question with id when a comment is created
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+        }),
         createComment: build.mutation({
             query: ({body, question_id, answer_id}) => ({
                 url: `/questions/${question_id}/answers/${answer_id}/comments`,

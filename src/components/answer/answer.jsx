@@ -5,6 +5,7 @@ import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTr
 import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
+import {useCreateCommentMutation} from "../../services/api/questionApi.js";
 
 
 const Answer = ({ answer, comments }) => {
@@ -16,6 +17,8 @@ const Answer = ({ answer, comments }) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(date).toLocaleDateString(undefined, options);
     }
+
+    const [createComment] = useCreateCommentMutation()
 
 
     return (
