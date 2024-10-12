@@ -43,10 +43,11 @@ const Question = ({ question }) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(date).toLocaleDateString(undefined, options);
     }
-    console.log(questionContent)
+
     return (
         <div
-            className="bg-slate-900 text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
+            className="bg-slate-900
+            text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
             >
             <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
 
@@ -66,7 +67,7 @@ const Question = ({ question }) => {
                 )) : null}
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-auto">
                 <Ratings question={question} rating={question?.reputation}/>
 
                 {
