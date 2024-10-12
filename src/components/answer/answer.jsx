@@ -15,13 +15,24 @@ import {Button} from "../button/button.tsx";
 import {useState} from "react";
 import {useCreateCommentMutation} from "../../services/api/questionApi.js";
 import Editor from "../editor/editor.jsx";
+import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 
 
 const Answer = ({ answer, question, comments }) => {
 
     const [comment, setComment] = useState('')
 
+
+    const {
+        data: user,
+    } = useGetUserActivityQuery();
+
+    console.log("sdaasds", answer)
     const [answerContent, setAnswerContent] = useState(answer?.content)
+
+    const isOwner = user?.email === question?.created_by;
+
+
 
     // From date, get e.g. 22 hours ago
     const formatDate = (date) => {
