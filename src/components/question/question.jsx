@@ -43,7 +43,7 @@ const Question = ({ question }) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(date).toLocaleDateString(undefined, options);
     }
-
+    console.log(questionContent)
     return (
         <div
             className="bg-slate-900 text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
