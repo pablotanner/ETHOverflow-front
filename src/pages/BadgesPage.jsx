@@ -71,7 +71,7 @@ const BadgesPage = () => {
     const calculateProgress = (total, required) => {
         if (total <= 0) return 0;
         let progress = (total / required) * 100;
-        return progress > 100 ? 100 : progress;
+        return Math.round(progress > 100 ? 100 : progress);
     }
 
     const badges = [
