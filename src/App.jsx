@@ -10,6 +10,7 @@ import BadgesPage from "./pages/BadgesPage.jsx";
 import {Toaster} from "./components/toast/toaster.tsx";
 import {Provider, useSelector} from "react-redux";
 import {store} from "./services/store/store.js";
+import AccountDisplay from "./pages/Account-display.jsx";
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/courses" element={<CoursesPage/>}/>
                         <Route path="/badges" element={<BadgesPage/>}/>
+                        <Route path="/account" element={<AccountDisplay/>}/>
                     </Routes>
           </div>
 
