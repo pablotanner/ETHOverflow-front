@@ -66,7 +66,7 @@ const AboutPage = () => {
                         <span className="text-white">{user?.answers?.length}</span>
                     </div>
                     <div className="flex items-center text-white space-x-2">
-                        <MessageSquare className="h-5 w-5 text-gray-600"/>
+                        <MessageSquare className="h-5 w-5 text-white"/>
                         <span className="font-medium">Total Comments:</span>
                         <span className="text-white">{user?.comments?.length}</span>
                     </div>
