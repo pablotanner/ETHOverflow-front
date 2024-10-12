@@ -8,11 +8,10 @@ import {ArrowLeft} from "lucide-react";
 import {useGetQuestionQuery} from "../services/api/questionApi.js";
 import Comment from "../components/comment/comment.jsx";
 import Spinner from "../components/spinner/spinner.jsx";
-import * as PropTypes from "prop-types";
 import {
     Dialog,
     DialogContent,
-    DialogDescription, DialogFooter,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger
@@ -20,11 +19,6 @@ import {
 import {Input} from "../components/input/input.tsx";
 
 
-function AlertDialogFooter(props) {
-    return null;
-}
-
-AlertDialogFooter.propTypes = {children: PropTypes.node};
 const QuestionPage = () => {
     const useParam = useParams();
     const {id} = useParam;
@@ -54,34 +48,35 @@ const QuestionPage = () => {
 
             <Question question={question}/>
 
+            <Dialog>
+                <DialogTrigger asChild>
+                    <div className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add Comment</div>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Add Comment</DialogTitle>
+                    </DialogHeader>
+                    <div className="grid gap-4 py-4 w-full">
+                        <div className="flex items-center gap-4 w-full">
+                            <Input
+                                id="comment"
+                                defaultValue="Good Question"
+                                className="w-full"
+                            />
+                        </div>
+                    </div>
+                    <DialogFooter>
+                        <Button type="submit" variant="outline">Comment</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
             <div className="h-[1px] w-full bg-gray-200"/>
 
             {question?.comments_of_questions_list.map((comment) => (
             <Comment comment={comment}/>
             ))}
 
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button variant="link">Add Comment</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Add Comment</DialogTitle>
-                    </DialogHeader>
-                    <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Input
-                                id="comment"
-                                defaultValue="Good Question"
-                                className="col-span-3"
-                            />
-                        </div>
-                    </div>
-                    <DialogFooter>
-                        <Button type="submit">Comment</Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
 
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex justify-between">
