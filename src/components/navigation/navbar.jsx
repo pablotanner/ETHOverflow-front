@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
         <nav className="px-12 py-4 border-b border-b-gray-200 flex flex-row gap-16 items-center justify-center w-full">
             <div>
-                <img src={"/logo.png"} className="hover:opacity-60 cursor-pointer" width={90} onClick={() => navigate("/")}/>
+                <img src={"/logo.png"} className="hover:opacity-60 cursor-pointer" width={100} onClick={() => navigate("/")}/>
             </div>
 
             <MenuItem link={"/"}>Home</MenuItem>

@@ -14,15 +14,15 @@ const QuestionPage = () => {
     const navigate =  useNavigate()
 
 
-    const {
-        data: question,
-        isLoading: isQuestionLoading,
-        isError: isQuestionError
-    } = useGetQuestionQuery(id);
-
+    //const {
+    //    data: question,
+   //     isLoading: isQuestionLoading,
+   //     isError: isQuestionError
+   // } = useGetQuestionQuery(id);
+//
     const [sort, setSort] = useState('rating');
 
-    /*
+
 
     const question = {
         id: 1,
@@ -36,7 +36,7 @@ const QuestionPage = () => {
             {id: 2, body: 'Thanks for sharing!', user: 'John Doe'}
         ]
     }
-    */
+
 
 
     const comments = [
