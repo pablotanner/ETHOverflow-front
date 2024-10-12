@@ -50,6 +50,7 @@ const CreateQuestionPage = () => {
                 </p>
                 <TagInput
                     variant="default"
+                    className="pl-4"
                     placeholder="Enter tags "
                     tags={tags}
                     setTags={(newTags) => {

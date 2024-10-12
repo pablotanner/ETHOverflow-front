@@ -22,7 +22,7 @@ const HomePage = () => {
         <div className="gap-4 p-4 w-full">
             <h1 className="relative ">Welcome to ETHOverflow
 
-                <Button className="w-32 hover:border-gray-300 absolute top-2 right-0" variant="outline"
+                <Button className="w-32 hover:border-gray-300 ml-1 sm:ml-10 relative sm:absolute right-0 sm:right-8" variant="outline"
                         onClick={() => navigate("/questions/create")}
                 >
                     Create Question
