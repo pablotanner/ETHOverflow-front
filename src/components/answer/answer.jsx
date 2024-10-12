@@ -8,7 +8,7 @@ import {useState} from "react";
 import {useCreateCommentMutation} from "../../services/api/questionApi.js";
 
 
-const Answer = ({ answer, comments }) => {
+const Answer = ({ answer, question, comments }) => {
 
     const [comment, setComment] = useState('')
 
