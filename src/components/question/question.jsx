@@ -28,7 +28,7 @@ const Question = ({ question }) => {
 
     return (
         <div
-            className="bg-sky-950 text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
+            className="bg-slate-900 text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
             >
             <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
 
