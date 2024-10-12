@@ -87,28 +87,34 @@ const BadgesPage = () => {
 
     const badges = [
         {
-            title: 'Beginner',
+            title: 'Novice Answerer',
             description: 'You have answered 1 question',
             icon: '🎓',
             progress: calculateProgress(total_answers, 1)
         },
         {
-            title: 'Intermediate',
+            title: 'Intermediate Answerer',
             description: 'You have answered 5 questions',
             icon: '🏆',
             progress: calculateProgress(total_answers, 5)
         },
         {
-            title: 'Advanced',
+            title: 'Advanced Answerer',
             description: 'You have answered 15 questions',
             icon: '🚀',
             progress: calculateProgress(total_answers, 15)
         },
         {
-            title: 'Expert',
+            title: 'Expert Answerer',
             description: 'You have answered 30 questions',
             icon: '🔥',
             progress: calculateProgress(total_answers, 30)
+        },
+        {
+            title: 'Jobless Answerer',
+            description: 'You have answered 50 questions',
+            icon: '💩',
+            progress: calculateProgress(total_answers, 50)
         },
         {
             title: 'Reputation Beginner',

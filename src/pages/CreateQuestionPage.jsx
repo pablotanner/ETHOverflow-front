@@ -5,11 +5,13 @@ import {TagInput} from "emblor";
 import {Button} from "../components/button/button.tsx";
 import {useCreateQuestionMutation} from "../services/api/questionApi.js";
 import Editor from "../components/editor/editor.jsx";
+import {useNavigate} from "react-router-dom";
 
 const CreateQuestionPage = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('');
 
+    const navigate = useNavigate()
     const [tags, setTags] = useState([])
     const [activeTagIndex, setActiveTagIndex] = useState(null)
 
@@ -64,6 +66,13 @@ const CreateQuestionPage = () => {
                         title: title,
                         content: content,
                         tags: tags.map((tag) => tag.text),
+                    }).then((res) => {
+                        if (res.error) {
+                            console.log(res.error)
+                        } else{
+                            navigate("/questions/" + res?.data?.question_id)
+                        }
+
                     })
                 }}
             >

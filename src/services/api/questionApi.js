@@ -47,7 +47,7 @@ export const questionsApi = authApi.injectEndpoints({
                         });
                     })
             },
-            invalidatesTags: ['Questions']
+            invalidatesTags: ['Questions', 'User']
         }),
     }),
     overrideExisting: false,

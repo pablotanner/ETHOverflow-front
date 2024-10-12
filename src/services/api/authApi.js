@@ -15,7 +15,7 @@ export const authApi = createApi({
         }),
 
     }),
-    tagTypes: ['User', 'Questions','Answers']
+    tagTypes: ['User', 'Questions', 'Answers']
 })
 
 export const {
