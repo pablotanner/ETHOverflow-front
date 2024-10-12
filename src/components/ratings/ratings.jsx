@@ -28,7 +28,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
                             }
                         })
                     }}
-                    data-testid="upvote"
+                    data-testid={isUpVoted ? 'upvote' : 'downvote'}
                     className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer data-[testid='upvote']:text-indigo-400"
                     width={22}
                 />
@@ -43,7 +43,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
                             }
                         })
                     }}
-                    data-testid="downvote"
+                    data-testid={isDownVoted ? 'downvote' : 'upvote'}
                     className="text-gray-400 hover:text-red-400 hover:cursor-pointer data-[testid='downvote']:text-red-400"
 
                     width={22}/>
