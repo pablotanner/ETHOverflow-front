@@ -1,5 +1,5 @@
 import {Button} from "../components/button/button.tsx";
-import Question from "../components/post/question.jsx";
+import Question from "../components/question/question.jsx";
 import {useNavigate} from "react-router-dom";
 import {useGetQuestionsQuery} from "../services/api/questionApi.js";
 const HomePage = () => {

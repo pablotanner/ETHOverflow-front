@@ -4,6 +4,7 @@ import {ArrowDown, ArrowUp} from "lucide-react";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "../dropdown/dropdown.tsx";
 import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
+import {Badge} from "../badge/badge.tsx";
 
 
 const Question = ({ question }) => {
@@ -24,6 +25,15 @@ const Question = ({ question }) => {
             <p className="text-primary-foreground text-sm">by {question?.created_by}</p>
             <p className="text-primary-foreground text-sm">{formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
+
+            <div className="bottom-3 right-3 absolute flex gap-2">
+                {question?.tags?.length && question?.tags?.map((tag) => (
+                    <Badge variant="secondary">
+                        {tag}
+                    </Badge>
+                ))}
+            </div>
+
             <div className="flex gap-2"
                  onClick={() => navigate(`/questions/${post?.id}`)}
             >
