@@ -11,12 +11,13 @@ const HomePage = () => {
         isError: isQuestionsError
     } = useGetQuestionsQuery();
 
-    if (isLoading) {
-        return <Spinner/>
-    }
 
 
     const navigate = useNavigate()
+
+    if (isLoading) {
+        return <Spinner/>
+    }
     return (
         <div className="gap-4 p-4 w-full">
             <h1>Welcome to ETHOverflow</h1>
