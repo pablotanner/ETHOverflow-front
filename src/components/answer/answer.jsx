@@ -1,9 +1,15 @@
 import Ratings from "../ratings/ratings.jsx";
 import {Avatar, AvatarFallback} from "../avatar/avatar.tsx";
 import Comment from "../comment/comment.jsx";
+import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "../dialog/dialog.tsx";
+import {Input} from "../input/input.tsx";
+import {Button} from "../button/button.tsx";
+import {useState} from "react";
 
 
 const Answer = ({ answer, comments }) => {
+
+    const [comment, setComment] = useState('')
 
     // From date, get e.g. 22 hours ago
     const formatDate = (date) => {
@@ -32,6 +38,45 @@ const Answer = ({ answer, comments }) => {
                 <p className="text-xs text-gray-500">
                     {formatDate(answer?.date_answered)}
                 </p>
+
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <div className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add Comment</div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                            <DialogTitle>Add Comment</DialogTitle>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4 w-full">
+                            <div className="flex items-center gap-4 w-full">
+                                <Input
+                                    id="comment"
+                                    className="w-full"
+                                    onChange={(e) => setComment(e.target.value)}
+                                    placeholder="Add a comment"
+                                    value={comment}
+                                />
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit" variant="outline"
+                                    onClick={() => {
+                                        createComment({
+                                            question_id: answer?.question_id,
+                                            answer_id: answer?.id,
+                                            body: {
+                                                content: comment
+                                            }
+                                        }).then((res) => {
+                                            if (res.error) {
+                                                console.log(res.error)
+                                            }
+                                        })
+                                    }}
+                            >Comment</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             </div>
 
             <div className="flex flex-col gap-2 px-8">
