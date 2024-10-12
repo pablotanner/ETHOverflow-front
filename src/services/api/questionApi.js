@@ -143,7 +143,7 @@ export const questionsApi = authApi.injectEndpoints({
         }),
         deleteQuestion: build.mutation({
             query: (question_id) => ({
-                url: `/questions/${data.question_id}`,
+                url: `/questions/${question_id}`,
                 method: 'DELETE',
 
             }),
