@@ -66,8 +66,8 @@ const Answer = ({ answer, comments }) => {
                             <Button type="submit" variant="outline"
                                     onClick={() => {
                                         createComment({
-                                            question_id: answer?.question_id,
-                                            answer_id: answer?.id,
+                                            question_id: question?.id,
+                                            answer_id: answer?.answer_id,
                                             body: {
                                                 content: comment
                                             }

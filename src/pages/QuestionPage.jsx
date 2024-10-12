@@ -127,7 +127,7 @@ const QuestionPage = () => {
                 {
                     question?.answers_list?.map((answer) => (
                         <>
-                            <Answer answer={answer} comments={answer?.comments_list}/>
+                            <Answer answer={answer} question={question} comments={answer?.comments_list}/>
 
                             <div className="h-[1px] w-full bg-border"/>
                         </>
