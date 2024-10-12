@@ -82,17 +82,18 @@ const QuestionPage = () => {
                     <DialogFooter>
                         <Button type="submit" variant="outline"
                                 onClick={() => {
-                                    console.log("questionid",question.id)
-                                    createComment({
-                                        question_id: question?.id,
-                                        body: {
-                                            content: comment
-                                        }
-                                    }).then((res) => {
-                                        if (res.error) {
-                                            console.log(res.error)
-                                        }
-                                    })
+                                    if (question && question.id) {
+                                        createComment({
+                                            question_id: question.id,
+                                            body: {
+                                                content: comment
+                                            }
+                                        }).then((res) => {
+                                            if (res.error) {
+                                                console.log(res.error)
+                                            }
+                                        })
+                                    }
                                 }}
                         >Comment</Button>
                     </DialogFooter>
