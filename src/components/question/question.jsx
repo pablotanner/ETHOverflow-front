@@ -40,10 +40,10 @@ const Question = ({ question }) => {
             </div>
 
             <div className="flex gap-2"
-                 onClick={() => navigate(`/questions/${post?.id}`)}
+                 onClick={() => navigate(`/questions/${question?.id}`)}
             >
                 <Ratings rating={question?.reputation}/>
-                <div dangerouslySetInnerHTML={createMarkup(post?.content)}/>
+                <div dangerouslySetInnerHTML={createMarkup(question?.content)}/>
 
 
                 <DropdownMenu>
