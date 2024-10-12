@@ -118,17 +118,19 @@ const Answer = ({ answer, question, comments }) => {
                 <Dialog>
                     <DialogTrigger asChild>
                         <div
-                            className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add
+                            className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2"
+                            hidden={!isOwner}
+                        >
                             Edit
                         </div>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
+                    <DialogContent >
                         <DialogHeader>
                             <DialogTitle>Edit Comment</DialogTitle>
                         </DialogHeader>
                         <div className="grid gap-4 py-4 w-full">
                             <div className="flex items-center gap-4 w-full">
-                                <Editor  defaultValue={answer?.content} setValue={setAnswerContent}/>
+                                <Editor value={answerContent} setValue={setAnswerContent}/>
                             </div>
                         </div>
                         <DialogFooter>
