@@ -1,3 +1,5 @@
+import {Badge} from "../components/badge/badge.tsx";
+
 const departments = [
     { name: "Architecture", abbrev: "D-ARCH", website: "https://www.arch.ethz.ch" },
     { name: "Civil, Environmental and Geomatic Engineering", abbrev: "D-BAUG", website: "https://www.baug.ethz.ch" },
@@ -33,7 +35,12 @@ const CoursesPage = () => {
                     {departments.map((dept, index) => (
                         <tr key={index} className="hover:bg-gray-100">
                             <td className="border-b p-2">{dept.name}</td>
-                            <td className="border-b p-2">{dept.abbrev}</td>
+                            <td className="border-b p-2">
+                                <Badge >
+                                    {dept.abbrev}
+                                </Badge>
+
+                            </td>
                             <td className="border-b p-2">
                                 <a href={dept.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                     {dept.website}
