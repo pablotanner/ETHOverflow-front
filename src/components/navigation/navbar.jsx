@@ -3,6 +3,7 @@ import {MagnifyingGlassIcon} from "@radix-ui/react-icons";
 import {useNavigate} from "react-router-dom";
 import {useGetUserActivityQuery, usePrefetch} from "../../services/api/authApi.js";
 import {useDispatch} from "react-redux";
+import {User} from "lucide-react";
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
 
     const MenuItem = ({children, link}) => {
         return (
-            <div className="hover:cursor-pointer text-black hover:text-slate-900 text-lg select-none font-semibold"
+            <div className="hover:cursor-pointer text-black hover:text-slate-600 text-lg select-none font-semibold"
                 onClick={() => navigate(link)}
             >
                 {children}
@@ -40,6 +41,8 @@ const Navbar = () => {
             </div>
 
             <MenuItem link={"/badges"}>Achievements</MenuItem>
+
+            <MenuItem link={"/account"}><User/></MenuItem>
         </nav>
     )
 }
