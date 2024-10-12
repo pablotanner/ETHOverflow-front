@@ -64,7 +64,7 @@ const CreateQuestionPage = () => {
                     createQuestion({
                         title: title,
                         content: content,
-                        tags: tags
+                        tags: tags.map((tag) => tag.text),
                     })
                 }}
             >
