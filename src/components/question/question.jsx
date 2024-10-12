@@ -58,10 +58,7 @@ const Question = ({ question }) => {
 
             <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
 
-                <ExternalLink className="text-white hover:cursor-pointer hover:text-gray-200"
-                              hidden={location.pathname === "/questions/" + question?.id}
-                              onClick={() => navigate("/questions/" + question?.id)}
-                />
+                
             </h1>
             <p className="text-primary-foreground text-sm">by {question?.created_by} on {formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
