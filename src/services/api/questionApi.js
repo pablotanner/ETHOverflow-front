@@ -262,11 +262,19 @@ export const questionsApi = authApi.injectEndpoints({
             }),
             invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
+        markAnswer: build.mutation({
+            query: (data) => ({
+                url: `/questions/${data.question_id}/mark-accepted/${data?.answer_id}`,
+                method: 'PUT',
+
+            }),
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
+        }),
     }),
     overrideExisting: false,
 })
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
     useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation,
-    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation, useEditQuestionMutation, useGetQuestionSearchQuery
+    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation, useEditQuestionMutation, useGetQuestionSearchQuery, useMarkAnswerMutation
 } = questionsApi;

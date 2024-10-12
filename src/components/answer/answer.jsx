@@ -13,7 +13,11 @@ import {
 import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
-import {useCreateCommentMutation, useEditAnswerMutation} from "../../services/api/questionApi.js";
+import {
+    useCreateCommentMutation,
+    useEditAnswerMutation,
+    useMarkAnswerMutation
+} from "../../services/api/questionApi.js";
 import Editor from "../editor/editor.jsx";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "../card/hover-card.tsx";
@@ -25,16 +29,21 @@ const Answer = ({ answer, question, comments }) => {
     const [comment, setComment] = useState('')
 
 
+    // Check that user is owner of the question
+    const isQuestionOwner = user?.email === question?.created_by;
+
     const {
         data: user,
     } = useGetUserActivityQuery();
 
     const [answerContent, setAnswerContent] = useState(answer?.content)
 
+    const [markAnswer, {isLoading: isMarkAnswerLoading}] = useMarkAnswerMutation()
+
     const isOwner = user?.email === answer?.created_by;
 
 
-
+    console.log(answer)
     // From date, get e.g. 22 hours ago
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -47,7 +56,9 @@ const Answer = ({ answer, question, comments }) => {
     const [editAnswer, {isLoading}] = useEditAnswerMutation()
 
     return (
-        <div className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative">
+        <div
+            data-accepted={answer?.accepted}
+            className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative data-[accepted='true']:border-2 data-[accepted='true']:border-pink-400">
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
                     <AvatarFallback>
@@ -153,7 +164,7 @@ const Answer = ({ answer, question, comments }) => {
                             Edit
                         </div>
                     </DialogTrigger>
-                    <DialogContent >
+                    <DialogContent>
                         <DialogHeader>
                             <DialogTitle>Edit Comment</DialogTitle>
                         </DialogHeader>
@@ -184,6 +195,25 @@ const Answer = ({ answer, question, comments }) => {
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>
+
+
+                <div
+                    className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2"
+                    hidden={!isQuestionOwner}
+                    onClick={() => {
+                        markAnswer({
+                            question_id: question?.id,
+                            answer_id: answer?.answer_id
+                        }).then((res) => {
+                            if (res.error) {
+                                console.log(res.error)
+                            }
+                        })
+                    }}
+                >
+
+                    Mark as Answer
+                </div>
             </div>
 
             <div className="flex flex-col gap-2 px-8">
