@@ -45,8 +45,10 @@ const QuestionPage = () => {
 
     if (isQuestionLoading) {
         return <Spinner/>
+    } else if (isQuestionError) {
+        return <div>An error occurred</div>
     }
-
+console.log(question?.answers_list)
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
             <Button variant="outline" className="w-24 items-center gap-2" onClick={() =>
