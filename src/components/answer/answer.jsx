@@ -59,7 +59,7 @@ const Answer = ({ answer, question, comments }) => {
                     <HoverCardTrigger asChild>
                         <p className="text-gray-500 text-xs cursor-pointer">{answer?.created_by}</p>
                     </HoverCardTrigger>
-                    <HoverCardContent className="w-60">
+                    <HoverCardContent className="w-64">
                     <div className="flex justify-between space-x-4">
                             <Avatar>
                                 <AvatarFallback>
