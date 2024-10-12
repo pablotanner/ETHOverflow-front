@@ -7,6 +7,11 @@ import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
 
+export const createMarkup = (html) => {
+    return  {
+        __html: DOMPurify.sanitize(html)
+    }
+}
 
 const Question = ({ question }) => {
 
@@ -15,11 +20,6 @@ const Question = ({ question }) => {
     const location = useLocation();
 
 
-    const createMarkup = (html) => {
-        return  {
-            __html: DOMPurify.sanitize(html)
-        }
-    }
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };

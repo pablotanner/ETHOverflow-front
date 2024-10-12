@@ -14,6 +14,7 @@ import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
 import {useCreateCommentMutation} from "../../services/api/questionApi.js";
+import {createMarkup} from "../question/question.jsx";
 
 
 const Answer = ({ answer, question, comments }) => {
@@ -28,7 +29,6 @@ const Answer = ({ answer, question, comments }) => {
 
     const [createComment, {isLoading}] = useCreateCommentMutation()
 
-    console.log(answer)
 
     return (
         <div className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative">
@@ -41,9 +41,10 @@ const Answer = ({ answer, question, comments }) => {
                 <p className="text-gray-500 text-xs">{answer?.created_by}</p>
             </div>
 
-            <div className="flex items-center text-sm ml-7">
-                <p>{answer?.content}</p>
-            </div>
+            <div className="flex items-center text-sm ml-7"
+                dangerouslySetInnerHTML={createMarkup(question?.content)}/>
+
+
             <div className="flex flex-row items-center gap-4">
                 <Ratings direction='horizontal' rating={answer?.total_vote_count}/>
 
@@ -53,7 +54,10 @@ const Answer = ({ answer, question, comments }) => {
 
                 <Dialog>
                     <DialogTrigger asChild>
-                        <div className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add Comment</div>
+                        <div
+                            className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add
+                            Comment
+                        </div>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
