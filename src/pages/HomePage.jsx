@@ -12,6 +12,8 @@ const HomePage = () => {
         isLoading: isQuestionsLoading
     } = useGetQuestionsQuery();
 
+    console.log(questions);
+
     if (isQuestionsLoading) {
         return <div>Loading...</div>
     }
@@ -36,11 +38,16 @@ const HomePage = () => {
                 Show Toast
             </Button>
 
-            {
-                questions?.map((question) => (
-                    <Question key={question.id} question={question}/>
-                ))
-            }
+            <div className="flex flex-col gap-4">
+                {
+                    questions?.map((question) => (
+                        <Question key={question.id} question={question}/>
+                    ))
+                }
+
+
+
+            </div>
 
 
             <div className="flex flex-col  text-lg">
