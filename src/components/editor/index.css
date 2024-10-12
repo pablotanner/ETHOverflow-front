@@ -950,7 +950,13 @@
 .ql-snow a {
     color: #06c;
 }
+
+.ql-snow {
+    background: white;
+}
 .ql-container.ql-snow {
     border: 1px solid #E5E7EA;
+    background: white;
+
 }
 
