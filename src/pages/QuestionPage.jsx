@@ -77,6 +77,7 @@ const QuestionPage = () => {
                     <DialogFooter>
                         <Button type="submit" variant="outline"
                                 onClick={() => {
+                                    console.log("questionid",question.id)
                                     createComment({
                                         question_id: question?.id,
                                         body: {
@@ -139,6 +140,8 @@ const QuestionPage = () => {
             <Button className="w-32 hover:border-gray-300" variant="outline"
 
                     onClick={() => {
+                        console.log("questionid",question)
+
                         createAnswer({
                             question_id: question?.id,
                             body: {
