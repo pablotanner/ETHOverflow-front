@@ -30,7 +30,7 @@ const Answer = ({ answer, question, comments }) => {
     console.log("sdaasds", answer)
     const [answerContent, setAnswerContent] = useState(answer?.content)
 
-    const isOwner = user?.email === question?.created_by;
+    const isOwner = user?.email === answer?.created_by;
 
 
 
@@ -149,7 +149,7 @@ const Answer = ({ answer, question, comments }) => {
                                                 }
                                             })
                                         }}
-                                >Comment</Button>
+                                >Save</Button>
 
                             </DialogClose>
 
