@@ -26,7 +26,7 @@ const HomePage = () => {
             </p>
 
 
-            <div className="flex flex-col gap-4 w-full" >
+            <div className="flex flex-col gap-6 mt-4 w-full" >
                 {!isQuestionsError &&
                     questions?.map((question) => (
                         <Question key={question?.id} question={question}/>
