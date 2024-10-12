@@ -37,7 +37,7 @@ const HomePage = () => {
             <div className="flex flex-col gap-4">
                 {!isQuestionsError &&
                     questions?.map((question) => (
-                        <Question key={question.id} question={question}/>
+                        <Question key={question?.id} question={question}/>
                     ))
                 }
 

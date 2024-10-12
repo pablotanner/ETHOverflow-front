@@ -19,7 +19,7 @@ const Question = ({ question }) => {
     return (
         <div
             className="bg-primary text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
-            onClick={() => navigate("/questions/1")}>
+            onClick={() => navigate("/questions/" + question?.id)}>
             <h1 className="font-semibold">{question?.title}</h1>
             <p className="text-primary-foreground text-sm">by {question?.created_by}</p>
             <p className="text-primary-foreground text-sm">{formatDate(question?.date_asked)}</p>
