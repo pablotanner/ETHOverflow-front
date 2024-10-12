@@ -5,6 +5,7 @@ import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger
 import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
+import DOMPurify from 'dompurify';
 
 
 const Question = ({ question }) => {
