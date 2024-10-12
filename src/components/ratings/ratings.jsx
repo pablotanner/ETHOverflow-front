@@ -29,8 +29,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
                         })
                     }}
                     data-testid="upvote"
-                    className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer data-testid='upvote':text-indigo-400"
-                    style={{transform: isUpVoted ? 'scale(1.2)' : 'scale(1)'}}
+                    className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer data-[testid='upvote']:text-indigo-400"
                     width={22}
                 />
 
@@ -45,7 +44,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
                         })
                     }}
                     data-testid="downvote"
-                    className="text-gray-400 hover:text-red-400 hover:cursor-pointer data-testid='downvote':text-red-400"
+                    className="text-gray-400 hover:text-red-400 hover:cursor-pointer data-[testid='downvote']:text-red-400"
 
                     width={22}/>
             </div>
