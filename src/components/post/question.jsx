@@ -21,7 +21,7 @@ const Question = ({ question }) => {
             className="bg-primary text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
             onClick={() => navigate("/questions/1")}>
             <h1 className="font-semibold">{question?.title}</h1>
-            <p className="text-primary-foreground text-sm">by {question?.email}</p>
+            <p className="text-primary-foreground text-sm">by {question?.created_by}</p>
             <p className="text-primary-foreground text-sm">{formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
             <div className="flex gap-2"

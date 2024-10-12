@@ -10,13 +10,11 @@ const HomePage = () => {
 
     const {
         data: questions,
-        isLoading: isQuestionsLoading
+        isLoading: isQuestionsLoading,
+        isError: isQuestionsError
     } = useGetQuestionsQuery();
 
 
-    if (isQuestionsLoading) {
-        return <div>Loading...</div>
-    }
 
     console.log(questions);
 
@@ -41,7 +39,7 @@ const HomePage = () => {
             </Button>
 
             <div className="flex flex-col gap-4">
-                {
+                {!isQuestionsError &&
                     questions?.map((question) => (
                         <Question key={question.id} question={question}/>
                     ))
