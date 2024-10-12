@@ -50,10 +50,10 @@ export const questionsApi = authApi.injectEndpoints({
             invalidatesTags: ['Questions', 'User']
         }),
         createCommentToQuestion: build.mutation({
-            query: ({body, question_id, answer_id}) => ({
-                url: `/questions/${question_id}/answers/${answer_id}/comments`,
+            query: (data) => ({
+                url: `/questions/${data.question_id}/answers/${data.answer_id}/comments`,
                 method: 'POST',
-                body
+                body: data.body
             }),
             async onQueryStarted(arg, { queryFulfilled }) {
                 toast({
@@ -80,10 +80,10 @@ export const questionsApi = authApi.injectEndpoints({
             invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
         }),
         createComment: build.mutation({
-            query: ({body, question_id, answer_id}) => ({
-                url: `/questions/${question_id}/answers/${answer_id}/comments`,
+            query: (data) => ({
+                url: `/questions/${data.question_id}/answers/${data?.answer_id}/comments`,
                 method: 'POST',
-                body
+                body: data.body
             }),
             async onQueryStarted(arg, { queryFulfilled }) {
                 toast({
@@ -110,10 +110,10 @@ export const questionsApi = authApi.injectEndpoints({
             invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
         }),
         createAnswer: build.mutation({
-            query: ({body, question_id}) => ({
-                url: `/questions/${question_id}/answers`,
+            query: (data) => ({
+                url: `/questions/${data.question_id}/answers`,
                 method: 'POST',
-                body
+                body: data.body
             }),
             async onQueryStarted(arg, { queryFulfilled }) {
                 toast({
