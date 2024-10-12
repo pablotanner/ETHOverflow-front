@@ -26,7 +26,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="px-12 py-4 border-b border-b-gray-200 flex flex-row gap-16 items-center justify-center w-full">
+        <nav className="px-12 py-4 border-b border-b-gray-200 flex flex-row gap-6 md:gap-16 lg:gap-24 items-center justify-center w-full">
             <div>
                 <img src={"/logo.png"} className="hover:opacity-60 cursor-pointer" width={100} onClick={() => navigate("/")}/>
             </div>
@@ -39,8 +39,7 @@ const Navbar = () => {
                 <Input className="h-8 pl-8"/>
             </div>
 
-            <MenuItem link={"/badges"}>Badges</MenuItem>
-            <MenuItem link={"/account"}>Account</MenuItem>
+            <MenuItem link={"/badges"}>Achievements</MenuItem>
         </nav>
     )
 }

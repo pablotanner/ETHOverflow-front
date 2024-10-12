@@ -1,4 +1,6 @@
 import Tetris from "react-tetris";
+import {Button} from "../components/button/button.tsx";
+import {RotateCw} from "lucide-react";
 
 
 const AboutPage = () => {
@@ -39,22 +41,23 @@ const AboutPage = () => {
                       state,
                       controller
                   }) => (
-                    <div className="flex flex-col">
-                        <div className="bg-indigo-300">
+                    <div className="flex flex-row">
+                        <div className="flex gap-5">
+                            <Gameboard/>
+                            <PieceQueue/>
+                        </div>
+                        <div className="bg-slate-200 font-semibold p-2">
                             <p>Points: {points}</p>
                             <p>Lines Cleared: {linesCleared}</p>
                             {state === 'LOST' && (
-                                <div className="bg-indigo-300 text-white">
+                                <div className="mt-4 border border-dashed border-black text-black p-2">
                                     <h2>Game Over</h2>
-                                    <button onClick={controller.restart} className="font-bold">New Game</button>
+                                    <Button onClick={controller.restart} variant="destructive" className="mt-4 text-white font-bold gap-4">
+                                        <RotateCw className="text-white"/>
+                                        New Game</Button>
                                 </div>
                             )}
                         </div>
-                        <div className="flex gap-5">
-                            <Gameboard />
-                            <PieceQueue />
-                        </div>
-
                     </div>
                 )}
             </Tetris>

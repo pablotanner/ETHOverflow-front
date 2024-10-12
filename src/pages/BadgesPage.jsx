@@ -18,22 +18,16 @@ const BadgesPage = () => {
     }
 
 
-    if (isUserError) {
-        return <div>Error</div>
-    }
-
-
-    console.log(user)
-
-
     const reputation = user?.reputation || 0;
     const total_answers = user?.total_answers || 0;
+
+
 
 
     const BadgeItem = ({title, description, icon, progress}) => {
 
         return (
-            <CardContainer className="flex min-w-56 flex-1 h-56">
+            <CardContainer className="flex min-w-56 flex-1 h-56 shadow-md bg-white/30">
                 <CardBody className="bg-white/90 relative backdrop-blur-xl group/card border-black/[0.1] justify-center items-center text-center  rounded-xl p-6 border">
                     <CardItem
                         translateZ="50"
