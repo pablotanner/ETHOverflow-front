@@ -8,15 +8,6 @@ import 'react-quill/dist/quill.snow.css';
 
 import {useEffect, useRef} from "react";
 
-const formula = () => {
-    const toolbar = this.quill.getModule('toolbar');
-    toolbar.addHandler('formula', () => {
-        const value = prompt('Enter formula');
-        this.quill.focus();
-        this.quill.insertText(this.quill.getLength(), `\\(${value}\\)`);
-    });
-}
-
 const Editor = ({value, setValue}) => {
     const quillRef = useRef(null); // Create a Ref
 
@@ -26,7 +17,8 @@ const Editor = ({value, setValue}) => {
             toolbar.addHandler("formula", function() {
                 const value = prompt('Enter formula');
                 this.quill.focus();
-                this.quill.insertText(this.quill.getLength(), `\\(${value}\\)`);
+                let cursorPosition = this.quill.getSelection().index;
+                this.quill.insertEmbed(cursorPosition, 'formula', value);
             });
         }
     }, []);
