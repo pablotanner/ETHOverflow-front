@@ -41,7 +41,7 @@ const Navbar = () => {
 
                        // on Click enter submit
                           onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
+                            if (e.key === 'Enter' && e.target.value) {
                                  navigate(`/search/${e.target.value}`)
                             }
                           }}
