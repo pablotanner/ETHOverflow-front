@@ -13,7 +13,7 @@ import {
 import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
-import {useCreateCommentMutation} from "../../services/api/questionApi.js";
+import {useCreateCommentMutation, useEditAnswerMutation} from "../../services/api/questionApi.js";
 import Editor from "../editor/editor.jsx";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 
@@ -27,7 +27,6 @@ const Answer = ({ answer, question, comments }) => {
         data: user,
     } = useGetUserActivityQuery();
 
-    console.log("sdaasds", answer)
     const [answerContent, setAnswerContent] = useState(answer?.content)
 
     const isOwner = user?.email === answer?.created_by;
@@ -40,8 +39,10 @@ const Answer = ({ answer, question, comments }) => {
         return new Date(date).toLocaleDateString(undefined, options);
     }
 
-    const [createComment, {isLoading}] = useCreateCommentMutation()
+    const [createComment, {isLoading: isCreateCommentLoading}] = useCreateCommentMutation()
 
+
+    const [editAnswer, {isLoading}] = useEditAnswerMutation()
 
     return (
         <div className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative">
@@ -93,7 +94,7 @@ const Answer = ({ answer, question, comments }) => {
                         </div>
                         <DialogFooter>
                             <DialogClose asChild>
-                                <Button type="submit" variant="outline" disabled={isLoading}
+                                <Button type="submit" variant="outline" disabled={isCreateCommentLoading}
                                         onClick={() => {
                                             createComment({
                                                 question_id: question?.id,
@@ -137,11 +138,10 @@ const Answer = ({ answer, question, comments }) => {
                             <DialogClose asChild>
                                 <Button type="submit" variant="outline" disabled={isLoading}
                                         onClick={() => {
-                                            createComment({
-                                                question_id: question?.id,
+                                            editAnswer({
                                                 answer_id: answer?.answer_id,
                                                 body: {
-                                                    content: comment
+                                                    content: answerContent
                                                 }
                                             }).then((res) => {
                                                 if (res.error) {
