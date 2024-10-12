@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useGetQuestionSearchQuery, useGetQuestionsQuery} from "../services/api/questionApi.js";
 import Spinner from "../components/spinner/spinner.jsx";
 import {Button} from "../utils/moving-border.jsx";
-const HomePage = () => {
+const SearchPage = () => {
 
     const params = useParams();
     const query = params.query;
@@ -52,4 +52,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default SearchPage;
