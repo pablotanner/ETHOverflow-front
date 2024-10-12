@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-route
 import QuestionPage from "./pages/QuestionPage.jsx";
 import FallbackPage from "./pages/FallbackPage.jsx";
 import CreateQuestionPage from "./pages/CreateQuestionPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
                   <Route path="*" element={<FallbackPage/>}/>
                   <Route path="/questions/create" element={<CreateQuestionPage/>}/>
                   <Route path="/questions/:id" element={<QuestionPage/>}/>
-
+                  <Route path="/about" element={<AboutPage/>}/>
               </Routes>
           </div>
       </BrowserRouter>
