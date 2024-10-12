@@ -20,7 +20,14 @@ const HomePage = () => {
     }
     return (
         <div className="gap-4 p-4 w-full">
-            <h1>Welcome to ETHOverflow</h1>
+            <h1 className="relative ">Welcome to ETHOverflow
+
+                <Button className="w-32 hover:border-gray-300 absolute top-2 right-0" variant="outline"
+                        onClick={() => navigate("/questions/create")}
+                >
+                    Create Question
+                </Button>
+            </h1>
             <p>
                 The best place to ask questions about ETH Courses.
             </p>
@@ -33,19 +40,21 @@ const HomePage = () => {
                     ))
                 }
 
+                {
+                    !questions?.length && !isQuestionsError && <div className="text-gray-500">
+                        There are currently no questions available
+                    </div>
+
+                }
+
+                {
+                    isQuestionsError && <div className="text-red-500">Something went wrong</div>
+                }
+
 
 
             </div>
 
-
-            <div className="flex flex-col  text-lg">
-                New Question
-                <Button className="w-32 hover:border-gray-300" variant="outline"
-                        onClick={() => navigate("/questions/create")}
-                >
-                    Ask
-                </Button>
-            </div>
 
 
         </div>
