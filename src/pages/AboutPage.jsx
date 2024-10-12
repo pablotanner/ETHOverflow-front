@@ -1,4 +1,3 @@
-import Tetris from "react-tetris";
 
 
 const AboutPage = () => {
@@ -11,50 +10,6 @@ const AboutPage = () => {
                 Jump in, contribute, and make ETH easier for everyone!
             </p>
 
-            <Tetris
-                keyboardControls={{
-                    // Default values shown here. These will be used if no
-                    // `keyboardControls` prop is provided.
-                    down: 'MOVE_DOWN',
-                    left: 'MOVE_LEFT',
-                    right: 'MOVE_RIGHT',
-                    space: 'HARD_DROP',
-                    z: 'FLIP_COUNTERCLOCKWISE',
-                    x: 'FLIP_CLOCKWISE',
-                    up: 'FLIP_CLOCKWISE',
-                    p: 'TOGGLE_PAUSE',
-                    c: 'HOLD',
-                    shift: 'HOLD'
-                }}
-            >
-                {({
-                      HeldPiece,
-                      Gameboard,
-                      PieceQueue,
-                      points,
-                      linesCleared,
-                      state,
-                      controller
-                  }) => (
-                    <div className="flex flex-col">
-                        <div className="bg-indigo-300">
-                            <p>Points: {points}</p>
-                            <p>Lines Cleared: {linesCleared}</p>
-                            {state === 'LOST' && (
-                                <div className="bg-indigo-300 text-white">
-                                    <h2>Game Over</h2>
-                                    <button onClick={controller.restart} className="font-bold">New Game</button>
-                                </div>
-                            )}
-                        </div>
-                        <div className="flex gap-5">
-                            <Gameboard />
-                            <PieceQueue />
-                        </div>
-
-                    </div>
-                )}
-            </Tetris>
 
         </div>
     );
