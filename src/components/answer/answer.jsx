@@ -49,7 +49,7 @@ const Answer = ({ answer, question, comments }) => {
 
 
             <div className="flex flex-row items-center gap-4">
-                <Ratings direction='horizontal' rating={answer?.total_vote_count}/>
+                <Ratings answer={answer} direction='horizontal' rating={answer?.total_vote_count}/>
 
                 <p className="text-xs text-gray-500">
                     {formatDate(answer?.date_answered)}

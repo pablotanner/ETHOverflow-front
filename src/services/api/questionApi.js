@@ -180,7 +180,16 @@ export const questionsApi = authApi.injectEndpoints({
                 body: data.body,
 
             }),
-            invalidatesTags: ['Questions', 'User']
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
+        }),
+        createAnswerVote: build.mutation({
+            query: (data) => ({
+                url: `/answer/${data.answer_id}/vote`,
+                method: 'POST',
+                body: data.body,
+
+            }),
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
     }),
     overrideExisting: false,
@@ -188,5 +197,5 @@ export const questionsApi = authApi.injectEndpoints({
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
     useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation,
-    useCreateQuestionVoteMutation
+    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation
 } = questionsApi;
