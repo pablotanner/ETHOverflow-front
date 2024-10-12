@@ -32,7 +32,7 @@ const Question = ({ question }) => {
             <p className="text-primary-foreground text-sm">{formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
 
-            <div className="bottom-3 right-3 absolute flex gap-2">
+            <div className="bottom-3 right-3 absolute flex gap-2 overflow-auto">
                 {question?.tags?.length ? question?.tags?.map((tag) => (
                     <Badge variant="secondary">
                         {tag}
