@@ -73,15 +73,27 @@ export default {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: "0" },
                 },
+                "shimmer": {
+                    from: {
+                        "backgroundPosition": "0 0"
+                    },
+                    to: {
+                        "backgroundPosition": "-200% 0"
+                    }
+                }
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                "shimmer": "shimmer 2s linear infinite",
             },
+
         },
     },
     plugins: [require("tailwindcss-animate"), addVariablesForColors],
 }
+
+
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }) {

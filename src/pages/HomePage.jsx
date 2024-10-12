@@ -1,8 +1,8 @@
-import {Button} from "../components/button/button.tsx";
 import Question from "../components/question/question.jsx";
 import {useNavigate} from "react-router-dom";
 import {useGetQuestionsQuery} from "../services/api/questionApi.js";
 import Spinner from "../components/spinner/spinner.jsx";
+import {Button} from "../utils/moving-border.jsx";
 const HomePage = () => {
 
     const {
@@ -20,13 +20,19 @@ const HomePage = () => {
     }
     return (
         <div className="gap-4 p-4 w-full">
-            <h1 className="relative ">Welcome to ETHOverflow
+            <h1 className="flex flex-row flex-wrap gap-2 items-center justify-between ">Welcome to ETHOverflow
 
-                <Button className="w-32 hover:border-gray-300 ml-1 sm:ml-10 relative sm:absolute right-0 sm:right-8" variant="outline"
+
+                <div>
+                    <Button
+                        className="bg-white p-3 dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+
                         onClick={() => navigate("/questions/create")}
-                >
-                    Create Question
-                </Button>
+                    >
+                        Create Question
+                    </Button>
+                </div>
+
             </h1>
             <p>
                 The best place to ask questions about ETH Courses.

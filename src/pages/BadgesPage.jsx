@@ -2,6 +2,7 @@ import {Avatar, AvatarFallback} from "../components/avatar/avatar.tsx";
 import {Progress} from "../components/progress/progress.tsx";
 import {CardBody, CardContainer, CardItem} from "../components/card/3d-card.jsx";
 import {useGetUserActivityQuery} from "../services/api/authApi.js";
+import {GlareCard} from "../components/card/glare-card.jsx";
 
 
 const BadgesPage = () => {
@@ -27,49 +28,42 @@ const BadgesPage = () => {
     const BadgeItem = ({title, description, icon, progress}) => {
 
         return (
-            <CardContainer className="flex min-w-56 flex-1 h-56 shadow-md bg-white/30">
-                <CardBody className="bg-white/90 relative backdrop-blur-xl group/card border-black/[0.1] justify-center items-center text-center  rounded-xl p-6 border">
-                    <CardItem
-                        translateZ="50"
-                        className="text-xl font-bold text-neutral-600 w-full"
-                    >
-                        {title}
-                    </CardItem>
-                    <CardItem
-                        as="p"
-                        translateZ="60"
-                        className="text-neutral-500 text-sm max-w-sm mt-2 w-full"
-                    >
-                        {description}
-                    </CardItem>
-                    <CardItem
-                        translateZ="100"
-                        rotateX={20}
-                        rotateZ={-10}
-                        className="w-full mt-4 flex justify-center items-center"
-                    >
+            <GlareCard>
+                    <div className="relative justify-center items-center text-center  rounded-xl p-6 border">
                         <div
-                            className="w-36 h-36 text-[50px] rounded-full flex items-center justify-center bg-indigo-100/60 ">
-                            {icon}
+                            className="text-xl font-bold text-white w-full"
+                        >
+                            {title}
                         </div>
-                    </CardItem>
-                    <div className="flex justify-between flex-col items-center mt-6">
-                        <CardItem
+                        <div
+                            className="text-white text-sm max-w-sm mt-2 w-full"
+                        >
+                            {description}
+                        </div>
+                        <div
 
-                            as="button"
-                            className="px-4 py-2 rounded-xl text-xs font-normal w-full"
+                            className="w-full mt-4 flex justify-center items-center"
                         >
-                            <Progress value={progress}/>
-                        </CardItem>
-                        <CardItem
-                            as="button"
-                            className="px-3 py-2 rounded-xl border-2 border-emerald-500 text-emerald-900 text-xs font-bold"
-                        >
-                            {progress}%
-                        </CardItem>
+                            <div
+                                className="w-36 h-36 text-[50px] rounded-full flex items-center justify-center bg-white ">
+                                {icon}
+                            </div>
+                        </div>
+                        <div className="flex justify-between flex-col text-white items-center mt-6">
+                            <div
+                                className="px-4 py-2 rounded-xl text-xs font-normal w-full"
+                            >
+                                <Progress value={progress}/>
+                            </div>
+                            <div
+                                className="px-3 py-2 rounded-xl border-2 text-white text-xs font-bold"
+                            >
+                                {progress}%
+                            </div>
+                        </div>
                     </div>
-                </CardBody>
-            </CardContainer>
+            </GlareCard>
+
         )
 
     }
