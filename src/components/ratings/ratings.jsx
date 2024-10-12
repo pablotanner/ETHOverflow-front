@@ -1,6 +1,6 @@
 import {ArrowBigDown, ArrowBigUp, ArrowDown, ArrowUp} from "lucide-react";
 import {useCreateAnswerVoteMutation, useCreateQuestionVoteMutation} from "../../services/api/questionApi.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 const Ratings = ({ rating, question, answer, direction }) => {
@@ -18,7 +18,10 @@ const Ratings = ({ rating, question, answer, direction }) => {
     const [currentRating, setCurrentRating] = useState(rating);
     const [userVoteType, setUserVoteType] = useState((answer ? answer?.user_vote_type : question?.user_vote_type) || 0);
 
-
+    // Update the state when the props change
+    useEffect(() => {
+        setUserVoteType(answer?.user_vote_type || question?.user_vote_type || 0);
+    }, [answer?.user_vote_type, question?.user_vote_type]);
     const handleVoteAnswer = async (voteType) => {
         const newVoteType = userVoteType === voteType ? 0 : voteType;
         const voteDifference = newVoteType - userVoteType;
