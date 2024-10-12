@@ -173,6 +173,38 @@ export const questionsApi = authApi.injectEndpoints({
             // Invalidate question with id when a comment is created
             invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
         }),
+        editQuestion: build.mutation({
+            query: (data) => ({
+                url: `/questions/${data.question_id}`,
+                method: 'PUT',
+                body: data.body,
+
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                toast({
+                    title: "Editing Question...",
+                    variant: "loading",
+                })
+                queryFulfilled
+                    .then(() => {
+                        toast({
+                            title: "Success",
+                            description: "Question edited successfully.",
+                            variant: "success",
+                        });
+                    })
+                    .catch(() => {
+
+                        toast({
+                            title: "Uh oh! Something went wrong.",
+                            description: "There was a problem with your request.",
+                            variant: "error",
+                        });
+                    })
+            },
+            // Invalidate question with id when a comment is created
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+        }),
         deleteQuestion: build.mutation({
             query: (question_id) => ({
                 url: `/questions/${question_id}`,
@@ -229,5 +261,5 @@ export const questionsApi = authApi.injectEndpoints({
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
     useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation,
-    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation
+    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation, useEditQuestionMutation
 } = questionsApi;

@@ -6,9 +6,15 @@ import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
-import {useCreateQuestionVoteMutation, useDeleteQuestionMutation} from "../../services/api/questionApi.js";
+import {
+    useCreateQuestionVoteMutation,
+    useDeleteQuestionMutation,
+    useEditQuestionMutation
+} from "../../services/api/questionApi.js";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 import {toast} from "../toast/use-toast.tsx";
+import {useState} from "react";
+import Editor from "../editor/editor.jsx";
 
 
 
@@ -20,10 +26,15 @@ const Question = ({ question }) => {
 
     const [deleteQuestion, {isLoading}] = useDeleteQuestionMutation();
 
+    const [editQuestion, {isLoading: isLoadingEditQuestion}] = useEditQuestionMutation();
+
     const {
         data: user,
     } = useGetUserActivityQuery();
 
+    const [isEditing, setIsEditing] = useState(false);
+
+    const [questionContent, setQuestionContent] = useState(question?.content);
 
     const isOwner = user?.email === question?.created_by;
 
@@ -57,11 +68,44 @@ const Question = ({ question }) => {
 
             <div className="flex gap-2">
                 <Ratings question={question} rating={question?.reputation}/>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html:question?.content
-                    }}/>
 
+                {
+                    isEditing ?
+                        <Editor value={questionContent} onChange={(value) => setQuestionContent(value)}/>
+                        :
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: question?.content
+                        }}/>
+                }
+
+                <div className="flex flex-col gap-2">
+                    <Button variant="outline"
+                            onClick={() => {
+                                setIsEditing(false)
+                                editQuestion({
+                                    question_id: question?.id,
+                                    body: {
+                                        content: questionContent
+                                    }
+                                }).then((res) => {
+                                    if (res.error) {
+                                        console.log(res.error)
+                                    }
+                                })
+                            }}
+                    >
+                        Cancel
+                    </Button>
+                    <Button variant="outline"
+                            onClick={() => {
+                                setIsEditing(false)
+
+                            }}
+                    >
+                        Save
+                    </Button>
+                </div>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
