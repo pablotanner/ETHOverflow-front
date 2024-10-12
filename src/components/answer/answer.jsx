@@ -20,6 +20,7 @@ const Answer = ({ answer, comments }) => {
 
     const [createComment] = useCreateCommentMutation()
 
+    console.log(answer)
 
     return (
         <div className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative">
