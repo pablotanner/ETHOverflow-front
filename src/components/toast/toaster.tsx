@@ -63,7 +63,7 @@ export function Toaster() {
             {toasts.map(function ({id, title, description, action, ...props}) {
                 return (
                     <Toast key={id}
-                           className={cn("flex justify-start", props?.variant === "loading" ? "items-center" : "items-start")}
+                           className={cn("flex bg-white justify-start", props?.variant === "loading" ? "items-center" : "items-start")}
                            {...props}>
                         {
                             props?.variant === "loading" ? (
