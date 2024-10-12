@@ -3,6 +3,7 @@ import { RotateCw, User, Mail, Calendar, Star, MessageSquare, ThumbsUp } from "l
 import { useGetQuestionsQuery } from "../services/api/questionApi.js";
 import React from "react";
 import {useGetUserActivityQuery} from "../services/api/authApi.js";
+import {GlareCard} from "../components/card/glare-card.jsx";
 
 const AboutPage = () => {
     const {
@@ -30,54 +31,56 @@ const AboutPage = () => {
     }
 
     return (
-        <div className="p-6 mt-4 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
-            <h1 className="text-2xl font-semibold text-gray-800 text-center">Account Information</h1>
-            <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                    <User className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Username:</span>
-                    <span className="text-gray-700">{user?.display_name}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <Mail className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Email:</span>
-                    <span className="text-gray-700">{user.email}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <Calendar className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Date Joined:</span>
-                    <span className="text-gray-700">{user.date_joined}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <Star className="h-5 w-5 text-yellow-500" />
-                    <span className="font-medium">Reputation:</span>
-                    <span className="text-gray-700">{user.reputation}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <MessageSquare className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Total Questions:</span>
-                    <span className="text-gray-700">{user.total_questions}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <MessageSquare className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Total Answers:</span>
-                    <span className="text-gray-700">{user.total_answers}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <MessageSquare className="h-5 w-5 text-gray-600" />
-                    <span className="font-medium">Total Comments:</span>
-                    <span className="text-gray-700">{user.total_comments}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <ThumbsUp className="h-5 w-5 text-green-500" />
-                    <span className="font-medium">Total Votes:</span>
-                    <span className="text-gray-700">{user.total_votes}</span>
+        <GlareCard>
+            <div className="p-6 mt-4 max-w-md mx-auto rounded-xl shadow-md space-y-4">
+                <h1 className="text-2xl font-semibold text-gray-800 text-center">Account Information</h1>
+                <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                        <User className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Username:</span>
+                        <span className="text-gray-700">{user?.display_name}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <Mail className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Email:</span>
+                        <span className="text-gray-700">{user.email}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <Calendar className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Date Joined:</span>
+                        <span className="text-gray-700">{user.date_joined}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <Star className="h-5 w-5 text-yellow-500"/>
+                        <span className="font-medium">Reputation:</span>
+                        <span className="text-gray-700">{user.reputation}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <MessageSquare className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Total Questions:</span>
+                        <span className="text-gray-700">{user?.questions?.length}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <MessageSquare className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Total Answers:</span>
+                        <span className="text-gray-700">{user?.answers?.length}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <MessageSquare className="h-5 w-5 text-gray-600"/>
+                        <span className="font-medium">Total Comments:</span>
+                        <span className="text-gray-700">{user?.comments?.length}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <ThumbsUp className="h-5 w-5 text-green-500"/>
+                        <span className="font-medium">Total Votes:</span>
+                        <span className="text-gray-700">{user?.votes?.length}</span>
+                    </div>
                 </div>
             </div>
-            <div className="flex justify-center mt-4">
-                <Button label="Edit Profile" />
-            </div>
-        </div>
+
+
+        </GlareCard>
+
     );
 };
 
