@@ -10,6 +10,7 @@ const Editor = ({value, setValue}) => {
             onChange={setValue}
 
             modules={{
+                formula: true,
                 toolbar: [
                     [{size: []}],
                     ['bold', 'italic', 'underline', 'strike'],
