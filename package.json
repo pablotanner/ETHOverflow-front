@@ -20,9 +20,11 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "emblor": "^1.4.6",
     "lucide-react": "^0.451.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.26.2",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7"

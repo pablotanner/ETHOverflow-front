@@ -26,7 +26,6 @@ const Navbar = () => {
             <MenuItem link={"/"}>Home</MenuItem>
             <MenuItem link={"/about"}>About</MenuItem>
             <MenuItem link={"/courses"}>Courses</MenuItem>
-
             <div className="relative">
                 <MagnifyingGlassIcon className="absolute top-1/2 left-2 transform -translate-y-1/2 text-gray-400"/>
                 <Input className="h-8 pl-8"/>
