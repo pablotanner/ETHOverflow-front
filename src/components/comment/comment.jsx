@@ -4,6 +4,12 @@ import {CalendarDays} from "lucide-react";
 
 
 const Comment = ({ comment }) => {
+
+    const formatDate = (date) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(date).toLocaleDateString(undefined, options);
+    }
+
     return (
         <div className="text-xs inline-flex float-left m-0 gap-1">
             <p className="text-gray-500">
