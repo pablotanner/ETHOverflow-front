@@ -20,7 +20,7 @@ const BadgesPage = () => {
 
 
     const reputation = user?.reputation || 0;
-    const total_answers = user?.total_answers || 0;
+    const total_answers = user?.answers?.length || 0;
 
 
     console.log(user, reputation, total_answers)
