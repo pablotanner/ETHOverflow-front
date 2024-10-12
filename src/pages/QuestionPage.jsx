@@ -5,6 +5,7 @@ import {TabsContent, TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.
 import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
+import {useGetQuestionQuery} from "../services/api/questionApi.js";
 
 
 const QuestionPage = () => {
@@ -13,7 +14,16 @@ const QuestionPage = () => {
     const navigate =  useNavigate()
 
 
+    const {
+        data: question,
+        isLoading: isQuestionLoading,
+        isError: isQuestionError
+    } = useGetQuestionQuery(id);
+    }
+
     const [sort, setSort] = useState('rating');
+
+/*
 
     const question = {
         id: 1,
@@ -27,6 +37,8 @@ const QuestionPage = () => {
             {id: 2, body: 'Thanks for sharing!', user: 'John Doe'}
         ]
     }
+ */
+
 
     const comments = [
         {id: 1, body: 'Great post!', user: 'Test User'},
