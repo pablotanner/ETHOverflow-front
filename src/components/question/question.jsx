@@ -47,7 +47,7 @@ const Question = ({ question }) => {
     return (
         <div
             data-page={location.pathname !== "/questions/" + question?.id}
-            className="bg-slate-900 data-[page='true']:hover:bg-slate-800
+            className="bg-slate-900 data-[page='true']:hover:bg-slate-800 data-[page='true']:hover:cursor-pointer
             text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
             onClick={() => {
                 if (location.pathname !== "/questions/" + question?.id) {
@@ -58,7 +58,7 @@ const Question = ({ question }) => {
 
             <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
 
-                
+
             </h1>
             <p className="text-primary-foreground text-sm">by {question?.created_by} on {formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
