@@ -79,7 +79,7 @@ const Question = ({ question }) => {
                         }}/>
                 }
 
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 text-black" hidden={!isEditing}>
                     <Button variant="outline"
                             onClick={() => {
                                 setIsEditing(false)

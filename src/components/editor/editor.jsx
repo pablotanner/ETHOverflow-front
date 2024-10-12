@@ -19,6 +19,7 @@ const Editor = ({value, defaultValue, setValue}) => {
             ref={quillRef}
             defaultValue={defaultValue}
             id="editor"
+            className="text-black"
 
             modules={{
                 formula: true,
