@@ -6,6 +6,7 @@ import {Input} from "../components/input/input.tsx";
 import {TagInput} from "emblor";
 import {Button} from "../components/button/button.tsx";
 import {useCreateQuestionMutation} from "../services/api/questionApi.js";
+import Editor from "../components/editor/editor.jsx";
 
 const CreateQuestionPage = () => {
     const [title, setTitle] = useState('')
@@ -36,7 +37,7 @@ const CreateQuestionPage = () => {
                 <p className="text-md">
                     This is where the user will input the content of the question.
                 </p>
-                <ReactQuill theme="snow" value={content} onChange={setContent}/>
+                <Editor value={content} onChange={setContent}/>
 
             </div>
 
