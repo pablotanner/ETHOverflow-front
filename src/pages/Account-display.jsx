@@ -71,7 +71,7 @@ const AboutPage = () => {
                         <span className="text-white">{user?.comments?.length}</span>
                     </div>
                     <div className="flex items-center text-white space-x-2">
-                        <ThumbsUp className="h-5 w-5 text-white"/>
+                        <ThumbsUp className="h-5 w-5 text-green-600"/>
                         <span className="font-medium">Total Votes:</span>
                         <span className="text-white">{user?.votes?.length}</span>
                     </div>
