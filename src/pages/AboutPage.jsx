@@ -41,7 +41,7 @@ const AboutPage = () => {
                       state,
                       controller
                   }) => (
-                    <div className="flex flex-row">
+                    <div className="flex flex-row mt-6">
                         <div className="flex gap-5">
                             <Gameboard/>
                             <PieceQueue/>

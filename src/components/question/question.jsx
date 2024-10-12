@@ -1,6 +1,6 @@
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../button/button.tsx";
-import {ArrowDown, ArrowUp} from "lucide-react";
+import {ArrowDown, ArrowUp, ExternalLink} from "lucide-react";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "../dropdown/dropdown.tsx";
 import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
@@ -11,6 +11,9 @@ import DOMPurify from 'dompurify';
 const Question = ({ question }) => {
 
     const navigate = useNavigate();
+
+    const location = useLocation();
+
 
     const createMarkup = (html) => {
         return  {
@@ -26,8 +29,14 @@ const Question = ({ question }) => {
     return (
         <div
             className="bg-primary text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
-            onClick={() => navigate("/questions/" + question?.id)}>
-            <h1 className="font-semibold">{question?.title}</h1>
+            >
+            <h1 className="font-semibold flex flex-row gap-6 items-center">{question?.title}
+
+                <ExternalLink className="text-white hover:cursor-pointer hover:text-gray-200"
+                              hidden={location.pathname === "/questions/" + question?.id}
+                              onClick={() => navigate("/questions/" + question?.id)}
+                />
+            </h1>
             <p className="text-primary-foreground text-sm">by {question?.created_by}</p>
             <p className="text-primary-foreground text-sm">on {formatDate(question?.date_asked)}</p>
             <div className="h-[1px] bg-gray-300 w-full"/>
