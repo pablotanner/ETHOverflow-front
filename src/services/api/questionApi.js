@@ -170,12 +170,23 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: ['Questions', 'User']
+        }),
+
+        createQuestionVote: build.mutation({
+            query: (data) => ({
+                url: `/questions/${data.question_id}/vote`,
+                method: 'POST',
+                body: data.body,
+
+            }),
+            invalidatesTags: ['Questions', 'User']
         }),
     }),
     overrideExisting: false,
 })
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
-    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation
+    useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation,
+    useCreateQuestionVoteMutation
 } = questionsApi;

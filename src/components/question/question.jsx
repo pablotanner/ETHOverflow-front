@@ -6,7 +6,7 @@ import {DotsVerticalIcon} from "@radix-ui/react-icons";
 import Ratings from "../ratings/ratings.jsx";
 import {Badge} from "../badge/badge.tsx";
 import DOMPurify from 'dompurify';
-import {useDeleteQuestionMutation} from "../../services/api/questionApi.js";
+import {useCreateQuestionVoteMutation, useDeleteQuestionMutation} from "../../services/api/questionApi.js";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 
 
@@ -23,9 +23,10 @@ const Question = ({ question }) => {
         data: user,
     } = useGetUserActivityQuery();
 
-    console.log(user, question)
 
     const isOwner = user?.email === question?.created_by;
+
+
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -55,7 +56,7 @@ const Question = ({ question }) => {
             </div>
 
             <div className="flex gap-2">
-                <Ratings rating={question?.reputation}/>
+                <Ratings question={question} rating={question?.reputation}/>
                 <div
                     dangerouslySetInnerHTML={{
                         __html:question?.content

@@ -1,18 +1,43 @@
 import {ArrowBigDown, ArrowBigUp, ArrowDown, ArrowUp} from "lucide-react";
+import {useCreateQuestionVoteMutation} from "../../services/api/questionApi.js";
 
 
-const Ratings = ({ rating, direction }) => {
+const Ratings = ({ rating, question, direction }) => {
 
     Ratings.defaultProps = {
         direction: 'vertical'
     }
 
+    const [sendVote] = useCreateQuestionVoteMutation();
+
+
     if (direction === 'horizontal') {
         return (
             <div className="flex items-center justify-start gap-[2px]">
-                <ArrowBigUp className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" width={22}/>
+                <ArrowBigUp
+
+                    onClick={() => {
+                        sendVote({
+                            question_id: question?.id,
+                            body: {
+                                vote_type: 1
+                            }
+                        })
+                    }}
+
+                    className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" width={22}/>
                 <p className="font-semibold text-gray-700 text-xs">{rating || 0}</p>
-                <ArrowBigDown className="text-gray-400 hover:text-red-400 hover:cursor-pointer"  width={22}/>
+                <ArrowBigDown
+                    onClick={() => {
+                        sendVote({
+                            question_id: question?.id,
+                            body: {
+                                vote_type: -1
+                            }
+                        })
+                    }}
+
+                    className="text-gray-400 hover:text-red-400 hover:cursor-pointer"  width={22}/>
             </div>
         )
     }
