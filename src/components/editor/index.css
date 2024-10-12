@@ -931,6 +931,7 @@
 }
 .ql-snow .ql-tooltip.ql-editing input[type=text] {
     display: inline-block;
+    background: white;
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
     border-right: 0px;
