@@ -7,7 +7,7 @@ import './index.css'
 
 import {useEffect, useRef} from "react";
 
-const Editor = ({value, setValue}) => {
+const Editor = ({value, defaultValue, setValue}) => {
     const quillRef = useRef(null); // Create a Ref
 
 
@@ -17,6 +17,7 @@ const Editor = ({value, setValue}) => {
             value={value}
             onChange={setValue}
             ref={quillRef}
+            defaultValue={defaultValue}
             id="editor"
 
             modules={{

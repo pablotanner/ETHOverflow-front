@@ -14,11 +14,14 @@ import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
 import {useCreateCommentMutation} from "../../services/api/questionApi.js";
+import Editor from "../editor/editor.jsx";
 
 
 const Answer = ({ answer, question, comments }) => {
 
     const [comment, setComment] = useState('')
+
+    const [answerContent, setAnswerContent] = useState(answer?.content)
 
     // From date, get e.g. 22 hours ago
     const formatDate = (date) => {
@@ -75,6 +78,46 @@ const Answer = ({ answer, question, comments }) => {
                                     placeholder="Add a comment"
                                     value={comment}
                                 />
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <DialogClose asChild>
+                                <Button type="submit" variant="outline" disabled={isLoading}
+                                        onClick={() => {
+                                            createComment({
+                                                question_id: question?.id,
+                                                answer_id: answer?.answer_id,
+                                                body: {
+                                                    content: comment
+                                                }
+                                            }).then((res) => {
+                                                if (res.error) {
+                                                    console.log(res.error)
+                                                }
+                                            })
+                                        }}
+                                >Comment</Button>
+
+                            </DialogClose>
+
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
+
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <div
+                            className="font-semibold text-sm text-slate-800 hover:underline cursor-pointer underline-offset-2">Add
+                            Edit
+                        </div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                            <DialogTitle>Edit Comment</DialogTitle>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4 w-full">
+                            <div className="flex items-center gap-4 w-full">
+                                <Editor  defaultValue={answer?.content} setValue={setAnswerContent}/>
                             </div>
                         </div>
                         <DialogFooter>
