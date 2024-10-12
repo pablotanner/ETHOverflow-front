@@ -37,7 +37,7 @@ const CreateQuestionPage = () => {
                 <p className="text-md">
                     This is where the user will input the content of the question.
                 </p>
-                <Editor value={content} onChange={setContent}/>
+                <Editor value={content} setValue={setContent}/>
 
             </div>
 
