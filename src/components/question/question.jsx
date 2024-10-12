@@ -49,9 +49,7 @@ const Question = ({ question }) => {
                 )) : null}
             </div>
 
-            <div className="flex gap-2"
-                 onClick={() => navigate(`/questions/${question?.id}`)}
-            >
+            <div className="flex gap-2">
                 <Ratings rating={question?.reputation}/>
                 <div
                     dangerouslySetInnerHTML={createMarkup(question?.content)}/>
