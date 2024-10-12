@@ -1,6 +1,8 @@
 import 'katex';
 import ReactQuill from "react-quill";
 
+window.katex = katex;
+
 import 'katex/dist/katex.min.css';
 import {useEffect, useRef} from "react";
 
