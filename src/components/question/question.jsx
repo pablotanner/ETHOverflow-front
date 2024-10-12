@@ -79,33 +79,37 @@ const Question = ({ question }) => {
                         }}/>
                 }
 
-                <div className="flex flex-row gap-2 text-black" hidden={!isEditing}>
-                    <Button variant="outline"
-                            onClick={() => {
-                                setIsEditing(false)
-                                editQuestion({
-                                    question_id: question?.id,
-                                    body: {
-                                        content: questionContent
-                                    }
-                                }).then((res) => {
-                                    if (res.error) {
-                                        console.log(res.error)
-                                    }
-                                })
-                            }}
-                    >
-                        Cancel
-                    </Button>
-                    <Button variant="outline"
-                            onClick={() => {
-                                setIsEditing(false)
+                {isEditing ?
+                    <div className="flex flex-row gap-2 text-black">
+                        <Button variant="outline"
+                                onClick={() => {
+                                    setIsEditing(false)
+                                    setQuestionContent(question?.content)
+                                }}
+                        >
+                            Cancel
+                        </Button>
+                        <Button variant="outline"
+                                onClick={() => {
+                                    setIsEditing(false)
+                                    editQuestion({
+                                        question_id: question?.id,
+                                        body: {
+                                            content: questionContent
+                                        }
+                                    }).then((res) => {
+                                        if (res.error) {
+                                            console.log(res.error)
+                                        }
+                                    })
+                                }}
+                        >
+                            Save
+                        </Button>
+                    </div> : null
 
-                            }}
-                    >
-                        Save
-                    </Button>
-                </div>
+                }
+
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
