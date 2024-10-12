@@ -32,7 +32,7 @@ const SearchPage = () => {
                 }
 
                 {
-                    !questions?.length || questionsIsError && <div className="text-gray-500">
+                    (!questions?.length || questionsIsError) && <div className="text-gray-500">
                         Did not find any questions for {query}
                     </div>
 
