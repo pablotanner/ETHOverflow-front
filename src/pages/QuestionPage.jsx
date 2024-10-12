@@ -5,7 +5,7 @@ import {TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.tsx";
 import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
-import {useGetQuestionQuery} from "../services/api/questionApi.js";
+import {useCreateAnswerMutation, useCreateCommentMutation, useGetQuestionQuery} from "../services/api/questionApi.js";
 import Comment from "../components/comment/comment.jsx";
 import Spinner from "../components/spinner/spinner.jsx";
 import {
@@ -25,6 +25,7 @@ const QuestionPage = () => {
     const {id} = useParam;
     const navigate =  useNavigate()
 
+    const [comment, setComment] = useState('')
 
     const [reply, setReply] = useState('')
 
@@ -33,6 +34,9 @@ const QuestionPage = () => {
         isLoading: isQuestionLoading,
         isError: isQuestionError
    } = useGetQuestionQuery(id);
+
+    const [createComment] = useCreateCommentMutation()
+    const [createAnswer] = useCreateAnswerMutation()
 
     const [sort, setSort] = useState('rating');
 
@@ -63,13 +67,28 @@ const QuestionPage = () => {
                         <div className="flex items-center gap-4 w-full">
                             <Input
                                 id="comment"
-                                defaultValue="Good Question"
                                 className="w-full"
+                                onChange={(e) => setComment(e.target.value)}
+                                placeholder="Add a comment"
+                                value={comment}
                             />
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" variant="outline">Comment</Button>
+                        <Button type="submit" variant="outline"
+                                onClick={() => {
+                                    createComment({
+                                        question_id: question?.id,
+                                        body: {
+                                            content: comment
+                                        }
+                                    }).then((res) => {
+                                        if (res.error) {
+                                            console.log(res.error)
+                                        }
+                                    })
+                                }}
+                        >Comment</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
@@ -117,6 +136,23 @@ const QuestionPage = () => {
                 Add Answer
             </p>
             <Editor value={reply} setValue={setReply}/>
+            <Button className="w-32 hover:border-gray-300" variant="outline"
+
+                    onClick={() => {
+                        createAnswer({
+                            question_id: question?.id,
+                            body: {
+                                content: reply
+                            }
+                        }).then((res) => {
+                            if (res.error) {
+                                console.log(res.error)
+                            }
+                        })
+                    }}
+            >
+                Answer
+            </Button>
         </div>
     )
 }

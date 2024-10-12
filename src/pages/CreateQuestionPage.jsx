@@ -17,6 +17,7 @@ const CreateQuestionPage = () => {
 
     const [createQuestion] = useCreateQuestionMutation()
 
+
     return (
         <div className="flex flex-col gap-4 p-4 w-full">
             <h1>Ask a Question</h1>
