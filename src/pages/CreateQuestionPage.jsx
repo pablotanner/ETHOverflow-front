@@ -5,13 +5,16 @@ import {useState} from "react";
 import {Input} from "../components/input/input.tsx";
 import {TagInput} from "emblor";
 import {Button} from "../components/button/button.tsx";
+import {useCreateQuestionMutation} from "../services/api/questionApi.js";
 
 const CreateQuestionPage = () => {
-    const [value, setValue] = useState('');
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('');
 
     const [tags, setTags] = useState([])
     const [activeTagIndex, setActiveTagIndex] = useState(null)
 
+    const [createQuestion] = useCreateQuestionMutation()
 
     return (
         <div className="flex flex-col gap-4 p-4">
@@ -22,7 +25,10 @@ const CreateQuestionPage = () => {
                 <p className="text-md">
                     This is where the user will input the title of the question.
                 </p>
-                <Input placeholder="e.g. How to estimate Kolmogorov complexity"/>
+                <Input
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="e.g. How to estimate Kolmogorov complexity"/>
             </div>
 
             <div className="p-4 shadow-lg border border-border rounded-lg flex flex-col gap-1">
@@ -30,7 +36,7 @@ const CreateQuestionPage = () => {
                 <p className="text-md">
                     This is where the user will input the content of the question.
                 </p>
-                <ReactQuill theme="snow" value={value} onChange={setValue}/>
+                <ReactQuill theme="snow" value={content} onChange={setContent}/>
 
             </div>
 
@@ -46,7 +52,6 @@ const CreateQuestionPage = () => {
                     tags={tags}
                     setTags={(newTags) => {
                         setTags(newTags);
-
                     }}
                     activeTagIndex={activeTagIndex}
                     setActiveTagIndex={setActiveTagIndex}
@@ -54,7 +59,14 @@ const CreateQuestionPage = () => {
             </div>
 
             <Button className="w-32 hover:border-gray-300" variant="outline"
-                onClick={() => console.log(value)}
+                onClick={() => {
+                    console.log(content)
+                    createQuestion({
+                        title: title,
+                        content: content,
+                        tags: tags
+                    })
+                }}
             >
                 Submit
             </Button>

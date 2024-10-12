@@ -1,5 +1,6 @@
 import customFetchBase from "./customFetchBase.js";
 import {authApi} from "./authApi.js";
+import {toast} from "../../components/toast/use-toast.tsx";
 
 export const questionsApi = authApi.injectEndpoints({
     reducerPath: 'questionsApi',
@@ -19,8 +20,39 @@ export const questionsApi = authApi.injectEndpoints({
             }),
             providesTags: ['questions']
         }),
+        createQuestion: build.mutation({
+            query: (body) => ({
+                url: `/questions`,
+                method: 'POST',
+                body
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                toast({
+                    title: "Creating Question...",
+                    variant: "loading",
+                })
+                queryFulfilled
+                    .then(() => {
+                        toast({
+                            title: "Success",
+                            description: "Question created successfully.",
+                            variant: "success",
+                        });
+                    })
+                    .catch(() => {
+                        toast({
+                            title: "Uh oh! Something went wrong.",
+                            description: "There was a problem with your request.",
+                            variant: "error",
+                        });
+                    })
+            },
+            invalidatesTags: ['Questions']
+        }),
     }),
     overrideExisting: false,
 })
 
-export const { useGetQuestionQuery, useGetQuestionsQuery } = questionsApi;
+export const { useGetQuestionQuery, useGetQuestionsQuery,
+    useCreateQuestionMutation
+} = questionsApi;
