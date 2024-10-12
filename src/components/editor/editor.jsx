@@ -21,12 +21,12 @@ const Editor = ({value, setValue}) => {
             onChange={setValue}
 
             modules={{
-                formula: true,
+                //formula: true,
                 toolbar: [
                     [{size: []}],
                     ['bold', 'italic', 'underline', 'strike'],
                     [{'list': 'ordered'}, {'list': 'bullet'},],
-                    ['formula'],
+                    //['formula'],
                     ['clean']
                 ],
             }}
