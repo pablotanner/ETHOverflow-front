@@ -122,7 +122,11 @@ const Question = ({ question }) => {
                             Report
                         </DropdownMenuItem>
                         {
-                            isOwner ? <DropdownMenuItem>
+                            isOwner ? <DropdownMenuItem
+                                onClick={() => {
+                                    setIsEditing(true)
+                                }}
+                            >
                                 Edit
                             </DropdownMenuItem> : null
                         }
