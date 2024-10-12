@@ -3,7 +3,6 @@ import Question from "../components/post/question.jsx";
 import {useNavigate} from "react-router-dom";
 import {useToast} from "../components/toast/use-toast.tsx";
 import {useGetQuestionsQuery} from "../services/api/questionApi.js";
-import {Boxes} from "../components/background/boxes.jsx";
 const HomePage = () => {
     const {toast} = useToast()
 
@@ -16,12 +15,9 @@ const HomePage = () => {
 
 
 
-    console.log(questions);
-
     const navigate = useNavigate()
     return (
         <div className="gap-4 p-4">
-            <Boxes/>
             <h1>Welcome to ETHOverflow</h1>
             <p>
                 The best place to ask questions about ETH Courses.
