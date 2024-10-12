@@ -19,7 +19,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
                 <ArrowBigUp
                     onClick={() => {
                         sendVoteAnswer({
-                            answer_id: answer?.id || answer?.answer_id,
+                            answer_id: answer?.answer_id,
                             body: {
                                 vote_type: 1
                             }

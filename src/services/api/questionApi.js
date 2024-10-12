@@ -184,7 +184,7 @@ export const questionsApi = authApi.injectEndpoints({
         }),
         createAnswerVote: build.mutation({
             query: (data) => ({
-                url: `/answer/${data.answer_id}/vote`,
+                url: `/answers/${data.answer_id}/vote`,
                 method: 'POST',
                 body: data.body,
 
