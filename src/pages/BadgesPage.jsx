@@ -23,7 +23,7 @@ const BadgesPage = () => {
     const total_answers = user?.total_answers || 0;
 
 
-    console.log(reputation, total_answers)
+    console.log(user, reputation, total_answers)
 
     const BadgeItem = ({title, description, icon, progress}) => {
 

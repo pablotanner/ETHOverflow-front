@@ -27,7 +27,7 @@ const CoursesPage = () => {
                 <thead>
                     <tr>
                         <th className="border-b-2 p-2">Department</th>
-                        <th className="border-b-2 p-2">Abbreviation</th>
+                        <th className="border-b-2 p-2">Tag</th>
                         <th className="border-b-2 p-2">Website</th>
                     </tr>
                 </thead>
