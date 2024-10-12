@@ -19,6 +19,9 @@ const HomePage = () => {
     return (
         <div className="flex justify-center flex-col items-center">
 
+            <h1>
+                All Questions
+            </h1>
             <div className="card">
                 <div className="flex gap-3 flex-col">
                     {

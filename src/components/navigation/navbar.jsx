@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const MenuItem = ({children, link}) => {
         return (
-            <div className="hover:cursor-pointer hover:opacity-60 font-semibold"
+            <div className="hover:cursor-pointer text-black hover:text-primary font-semibold"
                 onClick={() => navigate(link)}
             >
                 {children}

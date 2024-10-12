@@ -3,6 +3,7 @@ import Navbar from "./components/navigation/navbar.jsx";
 import {BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-router-dom";
 import QuestionPage from "./pages/QuestionPage.jsx";
 import FallbackPage from "./pages/FallbackPage.jsx";
+import CreateQuestionPage from "./pages/CreateQuestionPage.jsx";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
               <Routes>
                   <Route path="/" element={<HomePage/>}/>
                   <Route path="*" element={<FallbackPage/>}/>
+                  <Route path="/questions/create" element={<CreateQuestionPage/>}/>
                   <Route path="/questions/:id" element={<QuestionPage/>}/>
 
               </Routes>

@@ -2,9 +2,11 @@
 
 const Comment = ({ comment }) => {
     return (
-        <div className="comment">
-        <h3>{comment.name}</h3>
-        <p>{comment.body}</p>
+        <div className="text-xs inline-flex float-left m-0 gap-1">
+            <p className="text-gray-500">
+                {comment?.user}:
+            </p>
+            <p>{comment.body}</p>
         </div>
     );
 }

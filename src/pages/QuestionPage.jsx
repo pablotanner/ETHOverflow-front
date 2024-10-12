@@ -23,6 +23,12 @@ const QuestionPage = () => {
             {id: 2, body: 'Thanks for sharing!', user: 'John Doe'}
         ]
     }
+
+    const comments = [
+        {id: 1, body: 'Great post!', user: 'Test User'},
+        {id: 2, body: 'Thanks for sharing!', user: 'Test User'}
+    ]
+
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
             <Question question={question}/>
@@ -47,7 +53,7 @@ const QuestionPage = () => {
                 {
                     question?.answers?.map((answer) => (
                         <>
-                            <Answer answer={answer}/>
+                            <Answer answer={answer} comments={comments}/>
 
                             <div className="h-[1px] w-full bg-gray-200"/>
                         </>
