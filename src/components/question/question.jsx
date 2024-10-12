@@ -70,27 +70,39 @@ const Question = ({ question }) => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem hidden={!isOwner} onClick={() => {
-                            toast()
+                            toast({
+                                title: "Your Report has been submitted to someone who cares",
+                                variant: "success",
+                            })
                         }}>
                             Report
                         </DropdownMenuItem>
-                        <DropdownMenuItem hidden={!isOwner}>
-                            Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem hidden={!isOwner}
-                            onClick={() => {
-                                deleteQuestion(question?.id).then((res) => {
-                                    if (res.error) {
-                                        console.log(res.error)
-                                    } else{
-                                        navigate("/")
-                                    }
-                                })
+                        {
+                            isOwner ? <DropdownMenuItem>
+                                Edit
+                            </DropdownMenuItem> : null
+                        }
 
-                            }}
-                        >
-                            Delete
-                        </DropdownMenuItem>
+
+                        {
+                            isOwner ? (
+                                <DropdownMenuItem
+                                    onClick={() => {
+                                        deleteQuestion(question?.id).then((res) => {
+                                            if (res.error) {
+                                                console.log(res.error)
+                                            } else{
+                                                navigate("/")
+                                            }
+                                        })
+
+                                    }}
+                                >
+                                    Delete
+                                </DropdownMenuItem>
+                            ) : null
+                        }
+
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
