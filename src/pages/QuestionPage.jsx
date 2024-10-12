@@ -7,8 +7,24 @@ import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
 import {useGetQuestionQuery} from "../services/api/questionApi.js";
 import Comment from "../components/comment/comment.jsx";
+import Spinner from "../components/spinner/spinner.jsx";
+import * as PropTypes from "prop-types";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription, DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "../components/dialog/dialog.tsx";
+import {Input} from "../components/input/input.tsx";
 
 
+function AlertDialogFooter(props) {
+    return null;
+}
+
+AlertDialogFooter.propTypes = {children: PropTypes.node};
 const QuestionPage = () => {
     const useParam = useParams();
     const {id} = useParam;
@@ -22,6 +38,10 @@ const QuestionPage = () => {
    } = useGetQuestionQuery(id);
 
     const [sort, setSort] = useState('rating');
+
+    if (isQuestionLoading) {
+        return <Spinner/>
+    }
 
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
@@ -39,6 +59,29 @@ const QuestionPage = () => {
             {question?.comments_of_questions_list.map((comment) => (
             <Comment comment={comment}/>
             ))}
+
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button variant="link">Add Comment</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Add Comment</DialogTitle>
+                    </DialogHeader>
+                    <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Input
+                                id="comment"
+                                defaultValue="Good Question"
+                                className="col-span-3"
+                            />
+                        </div>
+                    </div>
+                    <DialogFooter>
+                        <Button type="submit">Comment</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
 
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex justify-between">
