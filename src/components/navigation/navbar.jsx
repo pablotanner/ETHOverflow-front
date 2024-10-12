@@ -37,7 +37,17 @@ const Navbar = () => {
             <MenuItem link={"/courses"}>Courses</MenuItem>
             <div className="relative hidden sm:flex">
                 <MagnifyingGlassIcon className="absolute top-1/2 left-2 transform -translate-y-1/2 text-gray-400"/>
-                <Input className="h-8 pl-8 min-w-24 md:min-w-36"/>
+                <Input className="h-8 pl-8 min-w-24 md:min-w-36"
+
+                       // on Click enter submit
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                 navigate(`/search/${e.target.value}`)
+                            }
+                          }}
+
+
+                />
             </div>
 
             <MenuItem link={"/badges"}>Achievements</MenuItem>

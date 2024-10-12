@@ -20,6 +20,13 @@ export const questionsApi = authApi.injectEndpoints({
             }),
             providesTags: ['Questions']
         }),
+        getQuestionSearch: build.query({
+            query: (query) => ({
+                url: `/search?query=${query}`,
+                method: 'GET',
+            }),
+
+        }),
         createQuestion: build.mutation({
             query: (body) => ({
                 url: `/questions`,
@@ -261,5 +268,5 @@ export const questionsApi = authApi.injectEndpoints({
 
 export const { useGetQuestionsQuery, useGetQuestionQuery,
     useCreateQuestionMutation, useCreateCommentMutation, useCreateAnswerMutation, useCreateCommentToQuestionMutation, useDeleteQuestionMutation,
-    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation, useEditQuestionMutation
+    useCreateQuestionVoteMutation, useCreateAnswerVoteMutation, useEditAnswerMutation, useEditQuestionMutation, useGetQuestionSearchQuery
 } = questionsApi;

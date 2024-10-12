@@ -131,7 +131,7 @@ console.log(question?.answers_list)
                 {
                     [...question?.answers_list]?.sort((a,b) => {
                         if (sort === 'rating') {
-                            return b.rating - a.rating
+                            return b?.total_vote_count - a?.total_vote_count
                         } else if (sort === 'oldest') {
                             return new Date(a.date_answered) - new Date(b.date_answered)
                         } else {
