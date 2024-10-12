@@ -14,15 +14,15 @@ const QuestionPage = () => {
     const navigate =  useNavigate()
 
 
-    //const {
-    //    data: question,
-   //     isLoading: isQuestionLoading,
-   //     isError: isQuestionError
-   // } = useGetQuestionQuery(id);
-//
+    const {
+        data: question2,
+        isLoading: isQuestionLoading,
+        isError: isQuestionError
+   } = useGetQuestionQuery(id);
+
     const [sort, setSort] = useState('rating');
 
-
+    console.log(question2)
 
     const question = {
         id: 1,

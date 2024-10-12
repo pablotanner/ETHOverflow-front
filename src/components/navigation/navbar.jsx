@@ -1,7 +1,8 @@
 import {Input} from "../input/input.tsx";
 import {MagnifyingGlassIcon} from "@radix-ui/react-icons";
 import {useNavigate} from "react-router-dom";
-import {usePrefetch} from "../../services/api/authApi.js";
+import {useGetUserActivityQuery, usePrefetch} from "../../services/api/authApi.js";
+import {useDispatch} from "react-redux";
 
 
 const Navbar = () => {
@@ -13,7 +14,6 @@ const Navbar = () => {
 
     prefetchQuestions();
     prefetchUser();
-
 
     const MenuItem = ({children, link}) => {
         return (

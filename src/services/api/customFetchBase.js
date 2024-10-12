@@ -5,6 +5,11 @@ const mutex = new Mutex();
 
 
 
+/*
+
+This is totally unnecessary since we dont work with access tokens but too lazy to remove it since might break something
+ */
+
 // eslint-disable-next-line no-undef
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -30,10 +35,7 @@ const customFetchBase = async (args, api, extraOptions) => {
                 const refreshResult = await baseQuery({url: '/refresh', method: "POST", body: {
                         refreshToken: localStorage.getItem('refreshToken'),}}, api, extraOptions);
 
-                if (refreshResult.data) {
-                    const { accessToken, refreshToken } = refreshResult.data;
-                    localStorage.setItem('refreshToken', refreshToken);
-                    api.dispatch(setAccessToken(accessToken));
+                if (refreshResult?.data) {
 
                     // Retry the initial request
                     result = await baseQuery(args, api, extraOptions);
