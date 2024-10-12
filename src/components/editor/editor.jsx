@@ -3,7 +3,7 @@ window.katex = katex;
 import "katex/dist/katex.css";
 
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import './index.css'
 
 import {useEffect, useRef} from "react";
 

@@ -17,6 +17,7 @@ import {
     DialogTrigger
 } from "../components/dialog/dialog.tsx";
 import {Input} from "../components/input/input.tsx";
+import Editor from "../components/editor/editor.jsx";
 
 
 const QuestionPage = () => {
@@ -24,6 +25,8 @@ const QuestionPage = () => {
     const {id} = useParam;
     const navigate =  useNavigate()
 
+
+    const [reply, setReply] = useState('')
 
     const {
         data: question,
@@ -78,7 +81,7 @@ const QuestionPage = () => {
             ))}
 
 
-            <div className="flex flex-col gap-2 p-4">
+            <div className="flex flex-col gap-2 p-4" hidden={!question?.answers_list?.length}>
                 <div className="flex justify-between">
                     {question?.answers_list?.length || 0} Answers
                     <div className="flex flex-row gap-4 items-center">
@@ -94,7 +97,7 @@ const QuestionPage = () => {
                 </div>
 
 
-                <div className="h-[1px] w-full bg-gray-200"/>
+                <div className="h-[1px] w-full bg-border"/>
 
 
                 {
@@ -102,11 +105,18 @@ const QuestionPage = () => {
                         <>
                             <Answer answer={answer} comments={answer?.comments_list}/>
 
-                            <div className="h-[1px] w-full bg-gray-200"/>
+                            <div className="h-[1px] w-full bg-border"/>
                         </>
                     ))
                 }
+
+
             </div>
+
+            <p className="text-md">
+                Add Answer
+            </p>
+            <Editor value={reply} setValue={setReply}/>
         </div>
     )
 }
