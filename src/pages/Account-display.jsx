@@ -32,48 +32,48 @@ const AboutPage = () => {
 
     return (
         <div className="mx-auto p-6 ">
-            <GlareCard>
+            <GlareCard className="p-6">
                 <h1 className="text-2xl font-semibold text-white text-center">Account Information</h1>
                 <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                         <User className="h-5 w-5 text-white"/>
                         <span className="font-medium">Username:</span>
-                        <span className="text-gray-700">{user?.display_name}</span>
+                        <span className="text-white">{user?.display_name}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <Mail className="h-5 w-5 text-white"/>
                         <span className="font-medium">Email:</span>
-                        <span className="text-gray-700">{user.email}</span>
+                        <span className="text-white">{user.email}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <Calendar className="h-5 w-5 text-white"/>
                         <span className="font-medium">Date Joined:</span>
-                        <span className="text-gray-700">{user.date_joined}</span>
+                        <span className="text-white">{user.date_joined}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <Star className="h-5 w-5 text-yellow-500"/>
                         <span className="font-medium">Reputation:</span>
-                        <span className="text-gray-700">{user.reputation}</span>
+                        <span className="text-white">{user.reputation}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <MessageSquare className="h-5 w-5 text-white"/>
                         <span className="font-medium">Total Questions:</span>
-                        <span className="text-gray-700">{user?.questions?.length}</span>
+                        <span className="text-white">{user?.questions?.length}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <MessageSquare className="h-5 w-5 text-white"/>
                         <span className="font-medium">Total Answers:</span>
-                        <span className="text-gray-700">{user?.answers?.length}</span>
+                        <span className="text-white">{user?.answers?.length}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <MessageSquare className="h-5 w-5 text-gray-600"/>
                         <span className="font-medium">Total Comments:</span>
-                        <span className="text-gray-700">{user?.comments?.length}</span>
+                        <span className="text-white">{user?.comments?.length}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <ThumbsUp className="h-5 w-5 text-white"/>
                         <span className="font-medium">Total Votes:</span>
-                        <span className="text-gray-700">{user?.votes?.length}</span>
+                        <span className="text-white">{user?.votes?.length}</span>
                     </div>
                 </div>
 
