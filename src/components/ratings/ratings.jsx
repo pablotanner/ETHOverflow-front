@@ -33,7 +33,7 @@ const Ratings = ({ rating, question, direction }) => {
                         sendVote({
                             question_id: question?.id,
                             body: {
-                                vote_type: 1
+                                vote_type: 12221
                             }
                         })
                     }}
