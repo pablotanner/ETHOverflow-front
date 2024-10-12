@@ -1,7 +1,14 @@
 import {Button} from "../components/button/button.tsx";
 import Question from "../components/post/question.jsx";
 import {useNavigate} from "react-router-dom";
+import {useToast} from "../components/toast/use-toast.tsx";
 const HomePage = () => {
+    const {toast} = useToast()
+
+
+
+
+
     const navigate = useNavigate()
     return (
         <div className="gap-4 p-4">
@@ -9,6 +16,17 @@ const HomePage = () => {
             <p>
                 The best place to ask questions about ETH Courses.
             </p>
+
+            <Button
+                onClick={() => {
+                    toast({
+                        title: "Scheduled: Catch up",
+                        description: "Friday, February 10, 2023 at 5:57 PM",
+                    })
+                }}
+            >
+                Show Toast
+            </Button>
 
             <div className="flex flex-col  text-lg">
                 New Question

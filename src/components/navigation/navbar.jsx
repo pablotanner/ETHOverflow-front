@@ -1,10 +1,15 @@
 import {Input} from "../input/input.tsx";
 import {MagnifyingGlassIcon} from "@radix-ui/react-icons";
 import {useNavigate} from "react-router-dom";
+import {usePrefetch} from "../../services/api/authApi.js";
 
 
 const Navbar = () => {
     const navigate = useNavigate();
+
+    const prefetchQuestions = usePrefetch('getQuestions');
+
+    prefetchQuestions();
 
 
     const MenuItem = ({children, link}) => {
