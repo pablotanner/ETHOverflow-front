@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import Question from "../components/question/question.jsx";
 import Answer from "../components/answer/answer.jsx";
-import {TabsContent, TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.tsx";
+import {TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.tsx";
 import {useState} from "react";
 import {Button} from "../components/button/button.tsx";
 import {ArrowLeft} from "lucide-react";
@@ -15,16 +15,15 @@ const QuestionPage = () => {
 
 
     const {
-        data: question2,
+        data: question,
         isLoading: isQuestionLoading,
         isError: isQuestionError
    } = useGetQuestionQuery(id);
 
     const [sort, setSort] = useState('rating');
 
-    console.log(question2)
 
-    const question = {
+    const question2 = {
         id: 1,
         user: 'user123',
         title: 'Hello World',

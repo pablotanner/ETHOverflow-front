@@ -1,9 +1,31 @@
 import {Avatar, AvatarFallback} from "../components/avatar/avatar.tsx";
 import {Progress} from "../components/progress/progress.tsx";
 import {CardBody, CardContainer, CardItem} from "../components/card/3d-card.jsx";
+import {useGetUserActivityQuery} from "../services/api/authApi.js";
 
 
 const BadgesPage = () => {
+
+    const {
+        data: user,
+        isLoading: isUserLoading,
+        isError: isUserError
+    } = useGetUserActivityQuery();
+
+
+    if (isUserLoading) {
+        return <div>Loading...</div>
+    }
+
+
+    if (isUserError) {
+        return <div>Error</div>
+    }
+
+
+    console.log(user)
+
+
 
     const BadgeItem = ({title, description, icon, progress}) => {
 
