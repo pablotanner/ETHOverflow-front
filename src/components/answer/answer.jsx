@@ -17,7 +17,7 @@ const Answer = ({ answer, comments }) => {
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
                     <AvatarFallback>
-                        <p>{answer?.creator[0] || "?"}</p>
+                        <p>{answer?.creator?.display_name[0] || "?"}</p>
                     </AvatarFallback>
                 </Avatar>
                 <p className="text-gray-500 text-xs">{answer?.created_by}</p>
@@ -30,7 +30,7 @@ const Answer = ({ answer, comments }) => {
                 <Ratings direction='horizontal' rating={answer?.total_vote_count}/>
 
                 <p className="text-xs text-gray-500">
-                    {formatDate(answer?.date_commented)}
+                    {formatDate(answer?.date_answered)}
                 </p>
             </div>
 
@@ -40,8 +40,6 @@ const Answer = ({ answer, comments }) => {
                         <div className="h-[1px] w-full bg-gray-200"/>
                         <Comment comment={comment}/>
                     </>
-
-
                 ))}
             </div>
         </div>

@@ -23,27 +23,6 @@ const QuestionPage = () => {
 
     const [sort, setSort] = useState('rating');
 
-
-    const question2 = {
-        id: 1,
-        user: 'user123',
-        title: 'Hello World',
-        body: 'Welcome to learning React!',
-        rating: 25,
-        tags: ['react', 'javascript', 'webdev'],
-        answers: [
-            {id: 1, body: 'Great question!', user: 'Pablo Tanner'},
-            {id: 2, body: 'Thanks for sharing!', user: 'John Doe'}
-        ]
-    }
-
-
-
-    const comments = [
-        {id: 1, body: 'Great question!', user: 'Test User'},
-        {id: 2, body: 'Thanks for sharing!', user: 'Test User'}
-    ]
-
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
             <Button variant="outline" className="w-24 items-center gap-2" onClick={() =>
