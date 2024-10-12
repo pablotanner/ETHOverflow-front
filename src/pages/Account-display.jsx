@@ -2,13 +2,15 @@ import { Button } from "../components/button/button.tsx";
 import { RotateCw, User, Mail, Calendar, Star, MessageSquare, ThumbsUp } from "lucide-react";
 import { useGetQuestionsQuery } from "../services/api/questionApi.js";
 import React from "react";
+import {useGetUserActivityQuery} from "../services/api/authApi.js";
 
 const AboutPage = () => {
     const {
         data: user,
         isLoading,
-        isError: isQuestionsError
-    } = useGetQuestionsQuery();
+        isError: isUserError
+    } = useGetUserActivityQuery()
+
 
     if (isLoading) {
         return (
@@ -19,7 +21,7 @@ const AboutPage = () => {
         );
     }
 
-    if (isQuestionsError) {
+    if (isUserError) {
         return (
             <div className="p-4 flex flex-col items-center justify-center h-full">
                 <p className="text-red-500">There was an error loading your account information.</p>
@@ -28,13 +30,13 @@ const AboutPage = () => {
     }
 
     return (
-        <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+        <div className="p-6 mt-4 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
             <h1 className="text-2xl font-semibold text-gray-800 text-center">Account Information</h1>
             <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                     <User className="h-5 w-5 text-gray-600" />
                     <span className="font-medium">Username:</span>
-                    <span className="text-gray-700">{user.username}</span>
+                    <span className="text-gray-700">{user?.display_name}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                     <Mail className="h-5 w-5 text-gray-600" />
