@@ -53,6 +53,6 @@ export const questionsApi = authApi.injectEndpoints({
     overrideExisting: false,
 })
 
-export const { useGetQuestionQuery, useGetQuestionsQuery,
+export const { useGetQuestionsQuery, useGetQuestionQuery,
     useCreateQuestionMutation
 } = questionsApi;

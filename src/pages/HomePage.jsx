@@ -2,13 +2,18 @@ import {Button} from "../components/button/button.tsx";
 import Question from "../components/question/question.jsx";
 import {useNavigate} from "react-router-dom";
 import {useGetQuestionsQuery} from "../services/api/questionApi.js";
+import Spinner from "../components/spinner/spinner.jsx";
 const HomePage = () => {
 
     const {
         data: questions,
+        isLoading,
         isError: isQuestionsError
     } = useGetQuestionsQuery();
 
+    if (isLoading) {
+        return <Spinner/>
+    }
 
 
     const navigate = useNavigate()
@@ -41,14 +46,7 @@ const HomePage = () => {
                 </Button>
             </div>
 
-            <div className="flex flex-col text-lg">
-                View a Question
-                <Button className="w-32 hover:border-gray-300" variant="outline"
-                        onClick={() => navigate("/questions/1")}
-                >
-                    Go
-                </Button>
-            </div>
+
         </div>
     )
 }
