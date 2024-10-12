@@ -10,9 +10,9 @@ const Ratings = ({ rating, direction }) => {
     if (direction === 'horizontal') {
         return (
             <div className="flex items-center justify-start gap-[2px]">
-                <ArrowBigUp className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" width={16}/>
+                <ArrowBigUp className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" width={22}/>
                 <p className="font-semibold text-gray-700 text-xs">{rating || 0}</p>
-                <ArrowBigDown className="text-gray-400 hover:text-red-400 hover:cursor-pointer"  width={16}/>
+                <ArrowBigDown className="text-gray-400 hover:text-red-400 hover:cursor-pointer"  width={22}/>
             </div>
         )
     }

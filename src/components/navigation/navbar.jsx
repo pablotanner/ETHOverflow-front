@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const MenuItem = ({children, link}) => {
         return (
-            <div className="hover:cursor-pointer text-black hover:text-primary font-semibold"
+            <div className="hover:cursor-pointer text-black hover:text-primary text-lg select-none font-semibold"
                 onClick={() => navigate(link)}
             >
                 {children}
@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="px-10 py-4 border-b border-b-gray-200 flex flex-row gap-12 items-center justify-center w-full">
+        <nav className="px-12 py-4 border-b border-b-gray-200 flex flex-row gap-16 items-center justify-center w-full">
             <div>
                 <img src={"/logo.png"} className="hover:opacity-60 cursor-pointer" width={90} onClick={() => navigate("/")}/>
             </div>

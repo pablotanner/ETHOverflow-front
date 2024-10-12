@@ -1,13 +1,17 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Question from "../components/post/question.jsx";
 import Answer from "../components/answer/answer.jsx";
 import {TabsContent, TabsTrigger, Tabs, TabsList} from "../components/tabs/tabs.tsx";
 import {useState} from "react";
+import {Button} from "../components/button/button.tsx";
+import {ArrowLeft} from "lucide-react";
 
 
 const QuestionPage = () => {
     const useParam = useParams();
     const {id} = useParam;
+    const navigate =  useNavigate()
+
 
     const [sort, setSort] = useState('rating');
 
@@ -31,6 +35,13 @@ const QuestionPage = () => {
 
     return (
         <div className="p-4 flex flex-col gap-2 w-full">
+            <Button variant="outline" className="w-24 items-center gap-2" onClick={() =>
+                navigate(-1)
+            }>
+                <ArrowLeft className="w-6 h-6"/>
+                Back
+            </Button>
+
             <Question question={question}/>
 
             <div className="flex flex-col gap-2 p-4">

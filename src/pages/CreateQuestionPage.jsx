@@ -14,20 +14,20 @@ const CreateQuestionPage = () => {
 
 
     return (
-        <div className="flex flex-col gap-4 p-3">
-            <h1 className="text-lg">Ask a Question</h1>
+        <div className="flex flex-col gap-4 p-4">
+            <h1>Ask a Question</h1>
 
             <div className="p-4 shadow-lg border border-border rounded-lg flex flex-col gap-1">
-                <h4 className="font-semibold text-sm">Title</h4>
-                <p className="text-xs">
+                <h4 className="font-semibold text-lg">Title</h4>
+                <p className="text-md">
                     This is where the user will input the title of the question.
                 </p>
                 <Input placeholder="e.g. How to estimate Kolmogorov complexity"/>
             </div>
 
             <div className="p-4 shadow-lg border border-border rounded-lg flex flex-col gap-1">
-                <h4 className="font-semibold text-sm">Content</h4>
-                <p className="text-xs">
+                <h4 className="font-semibold text-lg">Content</h4>
+                <p className="text-md">
                     This is where the user will input the content of the question.
                 </p>
                 <ReactQuill theme="snow" value={value} onChange={setValue}/>
@@ -36,8 +36,8 @@ const CreateQuestionPage = () => {
 
 
             <div className="p-4 shadow-lg border border-border rounded-lg flex flex-col gap-1">
-                <h4 className="font-semibold text-sm">Tags</h4>
-                <p className="text-xs">
+                <h4 className="font-semibold text-lg">Tags</h4>
+                <p className="text-md">
                     Select tags and separate them with a comma.
                 </p>
                 <TagInput

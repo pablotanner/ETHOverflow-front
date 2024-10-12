@@ -4,9 +4,10 @@ import {useNavigate} from "react-router-dom";
 const HomePage = () => {
     const navigate = useNavigate()
     return (
-        <div className="flex justify-center flex-col items-center gap-4">
+        <div className="gap-4 p-4">
+            <h1>Home</h1>
 
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center text-lg">
                 New Question
                 <Button className="w-32 hover:border-gray-300" variant="outline"
                         onClick={() => navigate("/questions/create")}
@@ -15,7 +16,7 @@ const HomePage = () => {
                 </Button>
             </div>
 
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center text-lg">
                 View a Question
                 <Button className="w-32 hover:border-gray-300" variant="outline"
                         onClick={() => navigate("/questions/1")}
