@@ -11,6 +11,7 @@ import {Toaster} from "./components/toast/toaster.tsx";
 import {Provider, useSelector} from "react-redux";
 import {store} from "./services/store/store.js";
 import AccountDisplay from "./pages/Account-display.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
 function App() {
 
   return (
@@ -29,7 +30,7 @@ function App() {
                         <Route path="/courses" element={<CoursesPage/>}/>
                         <Route path="/badges" element={<BadgesPage/>}/>
                         <Route path="/account" element={<AccountDisplay/>}/>
-                        <Route path="/search/:query" element={<HomePage/>}/>
+                        <Route path="/search/:query" element={<SearchPage/>}/>
                     </Routes>
           </div>
 
