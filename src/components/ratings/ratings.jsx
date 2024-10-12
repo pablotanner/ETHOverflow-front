@@ -12,7 +12,6 @@ const Ratings = ({ rating, question, answer, direction }) => {
 
     const [sendVoteAnswer] = useCreateAnswerVoteMutation();
 
-    console.log(answer)
     if (direction === 'horizontal') {
         return (
             <div className="flex items-center justify-start gap-[2px]">
@@ -29,7 +28,14 @@ const Ratings = ({ rating, question, answer, direction }) => {
                     className="text-gray-400 hover:text-indigo-400 hover:cursor-pointer" width={22}/>
                 <p className="font-semibold text-gray-700 text-xs">{rating || 0}</p>
                 <ArrowBigDown
-
+                    onClick={() => {
+                        sendVoteAnswer({
+                            answer_id: answer?.answer_id,
+                            body: {
+                                vote_type: -1
+                            }
+                        })
+                    }}
                     className="text-gray-400 hover:text-red-400 hover:cursor-pointer"  width={22}/>
             </div>
         )

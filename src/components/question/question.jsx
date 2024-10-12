@@ -26,6 +26,7 @@ const Question = ({ question }) => {
 
     const isOwner = user?.email === question?.created_by;
 
+    console.log("sdds", question)
 
 
     const formatDate = (date) => {
