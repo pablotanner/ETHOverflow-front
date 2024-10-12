@@ -1,7 +1,15 @@
 import Ratings from "../ratings/ratings.jsx";
 import {Avatar, AvatarFallback} from "../avatar/avatar.tsx";
 import Comment from "../comment/comment.jsx";
-import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "../dialog/dialog.tsx";
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "../dialog/dialog.tsx";
 import {Input} from "../input/input.tsx";
 import {Button} from "../button/button.tsx";
 import {useState} from "react";
@@ -18,7 +26,7 @@ const Answer = ({ answer, question, comments }) => {
         return new Date(date).toLocaleDateString(undefined, options);
     }
 
-    const [createComment] = useCreateCommentMutation()
+    const [createComment, {isLoading}] = useCreateCommentMutation()
 
     console.log(answer)
 
@@ -63,21 +71,25 @@ const Answer = ({ answer, question, comments }) => {
                             </div>
                         </div>
                         <DialogFooter>
-                            <Button type="submit" variant="outline"
-                                    onClick={() => {
-                                        createComment({
-                                            question_id: question?.id,
-                                            answer_id: answer?.answer_id,
-                                            body: {
-                                                content: comment
-                                            }
-                                        }).then((res) => {
-                                            if (res.error) {
-                                                console.log(res.error)
-                                            }
-                                        })
-                                    }}
-                            >Comment</Button>
+                            <DialogClose asChild>
+                                <Button type="submit" variant="outline" disabled={isLoading}
+                                        onClick={() => {
+                                            createComment({
+                                                question_id: question?.id,
+                                                answer_id: answer?.answer_id,
+                                                body: {
+                                                    content: comment
+                                                }
+                                            }).then((res) => {
+                                                if (res.error) {
+                                                    console.log(res.error)
+                                                }
+                                            })
+                                        }}
+                                >Comment</Button>
+
+                            </DialogClose>
+
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>

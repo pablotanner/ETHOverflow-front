@@ -12,7 +12,7 @@ import {
 import Comment from "../components/comment/comment.jsx";
 import Spinner from "../components/spinner/spinner.jsx";
 import {
-    Dialog,
+    Dialog, DialogClose,
     DialogContent,
     DialogFooter,
     DialogHeader,
@@ -78,22 +78,24 @@ const QuestionPage = () => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" variant="outline"
-                                onClick={() => {
-                                    if (question && question.id) {
-                                        createComment({
-                                            question_id: question.id,
-                                            body: {
-                                                content: comment
-                                            }
-                                        }).then((res) => {
-                                            if (res.error) {
-                                                console.log(res.error)
-                                            }
-                                        })
-                                    }
-                                }}
-                        >Comment</Button>
+                        <DialogClose asChild>
+                            <Button type="submit" variant="outline"
+                                    onClick={() => {
+                                        if (question && question.id) {
+                                            createComment({
+                                                question_id: question.id,
+                                                body: {
+                                                    content: comment
+                                                }
+                                            }).then((res) => {
+                                                if (res.error) {
+                                                    console.log(res.error)
+                                                }
+                                            })
+                                        }
+                                    }}
+                            >Comment</Button>
+                        </DialogClose>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
