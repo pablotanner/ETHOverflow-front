@@ -63,7 +63,6 @@ const CreateQuestionPage = () => {
 
             <Button className="w-32 hover:border-gray-300" variant="outline"
                 onClick={() => {
-                    console.log(content)
                     createQuestion({
                         title: title,
                         content: content,
@@ -77,6 +76,7 @@ const CreateQuestionPage = () => {
 
                     })
                 }}
+                    disabled={!content.length || !title.length}
             >
                 Submit
             </Button>
