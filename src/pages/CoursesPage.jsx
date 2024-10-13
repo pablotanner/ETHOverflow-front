@@ -1,4 +1,5 @@
 import {Badge} from "../components/badge/badge.tsx";
+import {useNavigate} from "react-router-dom";
 
 const departments = [
     { name: "Architecture", abbrev: "D-ARCH", website: "https://www.arch.ethz.ch" },
@@ -20,6 +21,7 @@ const departments = [
 ];
 
 const CoursesPage = () => {
+    const navigate = useNavigate()
     return (
         <div className="p-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-semibold mb-4">Department Tags</h1>
@@ -36,7 +38,10 @@ const CoursesPage = () => {
                         <tr key={index} className="hover:bg-gray-100">
                             <td className="border-b p-2">{dept.name}</td>
                             <td className="border-b p-2">
-                                <Badge variant={"secondary"}>
+                                <Badge variant={"secondary"}
+                                       className="hover:cursor-pointer"
+                                       onClick={() => navigate(`/search/${dept.abbrev}`)}
+                                >
                                     {dept.abbrev}
                                 </Badge>
 
