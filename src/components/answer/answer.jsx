@@ -59,7 +59,7 @@ const Answer = ({ answer, question, comments }) => {
     return (
         <div
             data-accepted={answer?.accepted || true}
-            className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative data-[accepted='true']:border-2 data-[accepted='true']:border-pink-400">
+            className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative data-[accepted='true']:border-2 data-[accepted='true']:border-amber-400">
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
                     <AvatarFallback>
