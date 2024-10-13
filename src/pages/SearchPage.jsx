@@ -3,6 +3,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useGetQuestionSearchQuery, useGetQuestionsQuery} from "../services/api/questionApi.js";
 import Spinner from "../components/spinner/spinner.jsx";
 import {Button} from "../utils/moving-border.jsx";
+import {useState} from "react";
+import {Tabs, TabsList, TabsTrigger} from "../components/tabs/tabs.tsx";
 const SearchPage = () => {
 
     const params = useParams();
@@ -14,6 +16,8 @@ const SearchPage = () => {
         isError: questionsIsError
     } = useGetQuestionSearchQuery(query);
 
+    const [sort, setSort] = useState('newest');
+
 
     if (isLoading) {
         return <Spinner/>
@@ -24,9 +28,28 @@ const SearchPage = () => {
                 Question Search Results
             </h1>
 
+            <div className="flex flex-row gap-4 items-center">
+                Sort by:
+                <Tabs value={sort}>
+                    <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
+                        <TabsTrigger value="rating">Rating</TabsTrigger>
+                        <TabsTrigger value="oldest">Oldest</TabsTrigger>
+                        <TabsTrigger value="newest">Newest</TabsTrigger>
+                    </TabsList>
+                </Tabs>
+            </div>
+
             <div className="flex flex-col gap-6 mt-4 w-full" >
                 {!questionsIsError &&
-                    questions?.map((question) => (
+                    [...questions].filter((a,b) => {
+                        if (sort === 'rating') {
+                            return b?.total_vote_count - a?.total_vote_count
+                        } else if (sort === 'oldest') {
+                            return new Date(a.date_answered) - new Date(b.date_answered)
+                        } else {
+                            return new Date(b.date_answered) - new Date(a.date_answered)
+                        }
+                    })?.map((question) => (
                         <Question key={question?.id} question={question}/>
                     ))
                 }
