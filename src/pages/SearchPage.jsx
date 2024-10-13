@@ -26,7 +26,7 @@ const SearchPage = () => {
             <div className="flex flex-row gap-4 justify-between">
 
                 <h1 className="flex flex-row flex-wrap gap-2 items-center justify-between ">
-                    Question Search Results
+                    Question Search Results - {query}
                 </h1>
 
             </div>

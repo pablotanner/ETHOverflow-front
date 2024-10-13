@@ -40,7 +40,7 @@ const AboutPage = () => {
         <div className="mx-auto p-6 ">
             <GlareCard className="p-4">
                 <h1 className="text-2xl font-semibold text-white text-center">Account Information</h1>
-                <div className="space-y-2">
+                <div className="space-y-2 mt-4">
                     <div className="flex items-center text-white space-x-2">
                         <User className="h-5 w-5 text-white"/>
                         <span className="font-medium">Username:</span>
