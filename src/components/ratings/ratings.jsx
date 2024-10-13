@@ -18,7 +18,6 @@ const Ratings = ({ rating, question, answer, direction }) => {
         setUserVoteType(answer?.user_vote_type || question?.user_vote_type || 0);
     }, [answer?.user_vote_type, question?.user_vote_type]);
 
-    console.log(userVoteType, currentRating)
 
     const handleVote = async (voteType, isQuestion = false) => {
         const newVoteType = userVoteType === voteType ? 0 : voteType;
@@ -81,10 +80,17 @@ const Ratings = ({ rating, question, answer, direction }) => {
 
         return (
             <div className="flex flex-col items-center justify-start">
-                <ArrowUp
-                    onClick={() => handleVote(1, true)}
-                    className={`text-primary-foreground hover:text-indigo-300 hover:cursor-pointer ${userVoteType===1 ? 'text-indigo-300' : ''}`}
-                />
+                {
+                    isUpVoted ?
+                        <ArrowUp
+                            onClick={() => handleVote(1, true)}
+                            className={`text-primary-foreground hover:text-indigo-300 hover:cursor-pointer text-indigo-300`}
+                        /> :
+                        <ArrowUp
+                            onClick={() => handleVote(1, true)}
+                            className={`text-primary-foreground hover:text-indigo-300 hover:cursor-pointer`}
+                        />
+                }
                 <p className="font-bold text-lg">{currentRating || 0}</p>
                 <ArrowDown
                     onClick={() => handleVote(-1, true)}

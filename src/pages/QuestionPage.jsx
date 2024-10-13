@@ -38,6 +38,8 @@ const QuestionPage = () => {
         isError: isQuestionError
    } = useGetQuestionQuery(id);
 
+    console.log(question)
+
     const [createComment] = useCreateCommentToQuestionMutation()
     const [createAnswer] = useCreateAnswerMutation()
 
