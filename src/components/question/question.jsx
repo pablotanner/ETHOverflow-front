@@ -44,6 +44,8 @@ const Question = ({ question }) => {
         return new Date(date).toLocaleDateString(undefined, options);
     }
 
+    console.log(question)
+
     return (
         <div
             data-page={location.pathname !== "/questions/" + question?.id}
