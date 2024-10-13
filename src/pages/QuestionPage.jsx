@@ -160,7 +160,7 @@ const QuestionPage = () => {
                 Add Answer
             </p>
             <Editor value={reply} setValue={setReply}/>
-            <Button className="w-32 hover:border-gray-300" variant="outline"
+            <Button className="w-32 hover:border-gray-300" variant="outline" disabled={!reply.length}
 
                     onClick={() => {
                         createAnswer({
