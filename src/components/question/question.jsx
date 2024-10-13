@@ -65,7 +65,10 @@ const Question = ({ question }) => {
 
             <div className="bottom-3 right-3 absolute flex gap-2 overflow-auto">
                 {question?.tags?.length ? question?.tags?.map((tag) => (
-                    <Badge variant="secondary">
+                    <Badge variant="secondary"
+                           className="hover:cursor-pointer"
+                           onClick={() => navigate(`/search/${tag}`)}
+                    >
                         {tag}
                     </Badge>
                 )) : null}
