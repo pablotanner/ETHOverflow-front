@@ -22,6 +22,7 @@ import Editor from "../editor/editor.jsx";
 import {useGetUserActivityQuery} from "../../services/api/authApi.js";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "../card/hover-card.tsx";
 import {CalendarDays} from "lucide-react";
+import {Badge} from "../badge/badge.tsx";
 
 
 const Answer = ({ answer, question, comments }) => {
@@ -57,7 +58,7 @@ const Answer = ({ answer, question, comments }) => {
 
     return (
         <div
-            data-accepted={answer?.accepted}
+            data-accepted={answer?.accepted || true}
             className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative data-[accepted='true']:border-2 data-[accepted='true']:border-pink-400">
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
@@ -214,6 +215,10 @@ const Answer = ({ answer, question, comments }) => {
 
                     Mark as Answer
                 </div>
+
+                <Badge variant="gold" >
+                    Best Answer
+                </Badge>
             </div>
 
             <div className="flex flex-col gap-2 px-8">
