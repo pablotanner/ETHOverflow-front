@@ -70,7 +70,7 @@ const Answer = ({ answer, question, comments }) => {
 
                 <HoverCard>
                     <HoverCardTrigger asChild>
-                        <p className="text-gray-500 text-xs cursor-pointer">{answer?.created_by}</p>
+                        <p className="text-gray-500 text-xs cursor-pointer">{answer?.display_name}</p>
                     </HoverCardTrigger>
                     <HoverCardContent className="w-64">
                     <div className="flex justify-between space-x-4">
@@ -79,19 +79,22 @@ const Answer = ({ answer, question, comments }) => {
                                     <p>{answer?.creator?.display_name[0] || "?"}</p>
                                 </AvatarFallback>
                             </Avatar>
-                            <div className="space-y-1">
-                                <h4 className="text-sm font-semibold">{answer?.creator?.display_name}</h4>
-                                <p className="text-sm">
-                                    Reputation: {answer?.creator?.reputation}
-                                </p>
-                                <div className="flex items-center pt-2">
-                                    <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                                    <span className="text-xs text-muted-foreground">
+                        <div className="space-y-1">
+                            <h4 className="text-sm font-semibold">{answer?.creator?.display_name}</h4>
+                            <p className="text-sm">
+                                {answer?.creator?.created_by}
+                            </p>
+                            <p className="text-sm">
+                                Reputation: {answer?.creator?.reputation}
+                            </p>
+                            <div className="flex items-center pt-2">
+                                <CalendarDays className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                <span className="text-xs text-muted-foreground">
                                         Joined on {formatDate(answer?.creator?.date_joined)}
                                 </span>
-                                </div>
                             </div>
                         </div>
+                    </div>
                     </HoverCardContent>
                 </HoverCard>
             </div>
