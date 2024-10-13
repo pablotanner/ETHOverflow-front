@@ -217,7 +217,7 @@ const Answer = ({ answer, question, comments }) => {
                     Mark as Answer
                 </div>
 
-                <Badge variant="gold" hidden={isAccepted}>
+                <Badge variant="gold" hidden={!isAccepted}>
                     Best Answer
                 </Badge>
             </div>
