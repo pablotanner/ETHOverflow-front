@@ -83,7 +83,7 @@ const Ratings = ({ rating, question, answer, direction }) => {
             <div className="flex flex-col items-center justify-start">
                 <ArrowUp
                     onClick={() => handleVote(1, true)}
-                    className={`text-primary-foreground hover:text-indigo-300 hover:cursor-pointer ${isUpVoted ? 'text-indigo-300' : ''}`}
+                    className={`text-primary-foreground hover:text-indigo-300 hover:cursor-pointer ${userVoteType===1 ? 'text-indigo-300' : ''}`}
                 />
                 <p className="font-bold text-lg">{currentRating || 0}</p>
                 <ArrowDown
