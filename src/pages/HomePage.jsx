@@ -34,7 +34,6 @@ const HomePage = () => {
         return new Date(Math.max(latestAnswerDate, latestCommentDate, new Date(question.date_answered)));
     };
 
-    console.log(questions)
 
     if (isLoading) {
         return <Spinner/>
