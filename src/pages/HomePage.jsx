@@ -75,7 +75,7 @@ const HomePage = () => {
                 {(!isQuestionsError && questions?.length) ?
                     [...questions].sort((a, b) => {
                         if (sort === 'rating') {
-                            return b?.total_vote_count - a?.total_vote_count;
+                            return b?.reputation - a?.reputation;
                         } else if (sort === 'newest') {
                             return new Date(b?.date_asked) - new Date(a?.date_asked);
                         } else if (sort === 'recent activity') {
