@@ -18,6 +18,8 @@ const Ratings = ({ rating, question, answer, direction }) => {
         setUserVoteType(answer?.user_vote_type || question?.user_vote_type || 0);
     }, [answer?.user_vote_type, question?.user_vote_type]);
 
+    console.log(userVoteType, currentRating)
+
     const handleVote = async (voteType, isQuestion = false) => {
         const newVoteType = userVoteType === voteType ? 0 : voteType;
         const voteDifference = (newVoteType - userVoteType);
