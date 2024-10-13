@@ -54,7 +54,7 @@ const HomePage = () => {
                 </div>
 
             </h1>
-            <p className="flex flex-row justify-between gap-2 items-center">
+            <p className="flex flex-row justify-between gap-2 items-center flex-wrap mt-2">
                 The best place to ask questions about ETH Courses.
 
                 <div className="flex flex-row gap-4 mt-4 items-center">
