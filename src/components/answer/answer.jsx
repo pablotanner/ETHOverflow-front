@@ -70,7 +70,7 @@ const Answer = ({ answer, question, comments }) => {
 
                 <HoverCard>
                     <HoverCardTrigger asChild>
-                        <p className="text-gray-500 text-xs cursor-pointer">{answer?.display_name}</p>
+                        <p className="text-gray-500 text-xs cursor-pointer">{answer?.creator?.display_name}</p>
                     </HoverCardTrigger>
                     <HoverCardContent className="w-64">
                     <div className="flex justify-between space-x-4">
