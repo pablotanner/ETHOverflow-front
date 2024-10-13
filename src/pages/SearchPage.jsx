@@ -66,7 +66,7 @@ const SearchPage = () => {
                         } else if (sort === 'newest') {
                             return new Date(b.date_answered) - new Date(a.date_answered)
                         } else {
-                            return new Date(b.date_answered) - new Date(a.date_answered)
+                            return getLastActivityDate(b) - getLastActivityDate(a);
                         }
                     })?.map((question) => (
                         <Question key={question?.id} question={question}/>
