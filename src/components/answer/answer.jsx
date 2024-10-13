@@ -44,13 +44,14 @@ const Answer = ({ answer, question, comments }) => {
     const isOwner = user?.email === answer?.created_by;
 
 
-    console.log(answer)
+    console.log(answer, question)
     // From date, get e.g. 22 hours ago
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(date).toLocaleDateString(undefined, options);
     }
 
+    const isAccepted = answer?.accepted
     const [createComment, {isLoading: isCreateCommentLoading}] = useCreateCommentMutation()
 
 
@@ -58,7 +59,7 @@ const Answer = ({ answer, question, comments }) => {
 
     return (
         <div
-            data-accepted={answer?.accepted || true}
+            data-accepted={isAccepted}
             className="bg-white border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative data-[accepted='true']:border-2 data-[accepted='true']:border-amber-400">
             <div className="flex flex-row gap-2 items-center">
                 <Avatar className="w-5 h-5 text-xs">
@@ -216,7 +217,7 @@ const Answer = ({ answer, question, comments }) => {
                     Mark as Answer
                 </div>
 
-                <Badge variant="gold" >
+                <Badge variant="gold" hidden={isAccepted}>
                     Best Answer
                 </Badge>
             </div>
