@@ -16,22 +16,6 @@ const SearchPage = () => {
         isError: questionsIsError
     } = useGetQuestionSearchQuery(query);
 
-    const [sort, setSort] = useState('newest');
-
-    // Helper function to determine the latest activity date
-    const getLastActivityDate = (question) => {
-        const latestAnswerDate = question?.answers_list?.length
-            ? new Date(Math.max(...question.answers_list.map(a => new Date(a.date_answered))))
-            : new Date(0);
-        const latestCommentDate = question?.comments_of_questions_list?.length
-            ? new Date(Math.max(...question.comments_of_questions_list.map(c => new Date(c?.date_commented))))
-            : new Date(0);
-
-        // Return the most recent date of activity
-        return new Date(Math.max(latestAnswerDate, latestCommentDate, new Date(question.date_answered)));
-    };
-
-    console.log(questions)
 
     //every question has answers (question?.answers_list) and comments (question?.comments_of_questions_list)
     if (isLoading) {
@@ -45,30 +29,12 @@ const SearchPage = () => {
                     Question Search Results
                 </h1>
 
-                <div className="flex flex-row gap-4 items-center">
-                    Sort by:
-                    <Tabs value={sort}>
-                        <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
-                            <TabsTrigger value="rating">Rating</TabsTrigger>
-                            <TabsTrigger value="newest">Newest</TabsTrigger>
-                            <TabsTrigger value="activity">Recent Activity</TabsTrigger>
-                        </TabsList>
-                    </Tabs>
-                </div>
             </div>
 
 
             <div className="flex flex-col gap-6 mt-4 w-full">
-                {(!questionsIsError && questions?.length) ?
-                    [...questions].sort((a, b) => {
-                        if (sort === 'rating') {
-                            return b?.total_vote_count - a?.total_vote_count
-                        } else if (sort === 'newest') {
-                            return new Date(b.date_answered) - new Date(a.date_answered)
-                        } else {
-                            return getLastActivityDate(b) - getLastActivityDate(a);
-                        }
-                    })?.map((question) => (
+                {!questionsIsError?
+                    questions?.map((question) => (
                         <Question key={question?.id} question={question}/>
                     )) : null
                 }

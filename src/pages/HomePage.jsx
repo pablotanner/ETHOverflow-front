@@ -3,6 +3,8 @@ import {useNavigate} from "react-router-dom";
 import {useGetQuestionsQuery} from "../services/api/questionApi.js";
 import Spinner from "../components/spinner/spinner.jsx";
 import {Button} from "../utils/moving-border.jsx";
+import {Tabs, TabsList, TabsTrigger} from "../components/tabs/tabs.tsx";
+import {useState} from "react";
 const HomePage = () => {
 
     const {
@@ -13,7 +15,25 @@ const HomePage = () => {
 
 
 
+
     const navigate = useNavigate()
+
+
+    const [sort, setSort] = useState('newest');
+
+    // Helper function to determine the latest activity date
+    const getLastActivityDate = (question) => {
+        const latestAnswerDate = question?.answers_list?.length
+            ? new Date(Math.max(...question.answers_list.map(a => new Date(a.date_answered))))
+            : new Date(0);
+        const latestCommentDate = question?.comments_of_questions_list?.length
+            ? new Date(Math.max(...question.comments_of_questions_list.map(c => new Date(c?.date_commented))))
+            : new Date(0);
+
+        // Return the most recent date of activity
+        return new Date(Math.max(latestAnswerDate, latestCommentDate, new Date(question.date_answered)));
+    };
+
 
     if (isLoading) {
         return <Spinner/>
@@ -34,16 +54,36 @@ const HomePage = () => {
                 </div>
 
             </h1>
-            <p>
+            <p className="flex flex-row justify-between gap-2 items-center">
                 The best place to ask questions about ETH Courses.
+
+                <div className="flex flex-row gap-4 mt-4 items-center">
+                    Sort by:
+                    <Tabs value={sort}>
+                        <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
+                            <TabsTrigger value="rating">Rating</TabsTrigger>
+                            <TabsTrigger value="newest">Newest</TabsTrigger>
+                            <TabsTrigger value="activity">Recent Activity</TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </div>
             </p>
 
 
-            <div className="flex flex-col gap-6 mt-4 w-full" >
-                {!isQuestionsError &&
-                    questions?.map((question) => (
+            <div className="flex flex-col gap-6 mt-3 w-full">
+                {(!isQuestionsError && questions?.length) ?
+                    [...questions].sort((a, b) => {
+                        if (sort === 'rating') {
+                            return b?.total_vote_count - a?.total_vote_count;
+                        } else if (sort === 'newest') {
+                            return new Date(b.date_answered) - new Date(a.date_answered);
+                        } else if (sort === 'activity') {
+                            // Sort by the most recent activity (answers or comments)
+                            return getLastActivityDate(b) - getLastActivityDate(a);
+                        }
+                    })?.map((question) => (
                         <Question key={question?.id} question={question}/>
-                    ))
+                    )) : null
                 }
 
                 {
@@ -58,9 +98,7 @@ const HomePage = () => {
                 }
 
 
-
             </div>
-
 
 
         </div>
