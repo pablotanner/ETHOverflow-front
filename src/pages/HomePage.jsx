@@ -63,7 +63,7 @@ const HomePage = () => {
                         <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
                             <TabsTrigger value="rating">Rating</TabsTrigger>
                             <TabsTrigger value="newest">Newest</TabsTrigger>
-                            <TabsTrigger value="activity">Recent Activity</TabsTrigger>
+                            <TabsTrigger value="recent activity">Recent Activity</TabsTrigger>
                         </TabsList>
                     </Tabs>
                 </div>
@@ -77,7 +77,7 @@ const HomePage = () => {
                             return b?.total_vote_count - a?.total_vote_count;
                         } else if (sort === 'newest') {
                             return new Date(b.date_answered) - new Date(a.date_answered);
-                        } else if (sort === 'activity') {
+                        } else if (sort === 'recent activity') {
                             // Sort by the most recent activity (answers or comments)
                             return getLastActivityDate(b) - getLastActivityDate(a);
                         }
