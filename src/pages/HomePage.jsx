@@ -79,7 +79,7 @@ const HomePage = () => {
                             return new Date(b?.date_asked) - new Date(a?.date_asked);
                         } else if (sort === 'recent activity') {
                             // Sort by the most recent activity (answers or comments)
-                            return getLastActivityDate(b) - getLastActivityDate(a);
+                            return new Date(b?.date_last_edited) - new Date(a?.date_last_edited);
                         }
                     })?.map((question) => (
                         <Question key={question?.id} question={question}/>
