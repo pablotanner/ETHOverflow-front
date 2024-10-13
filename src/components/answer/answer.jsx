@@ -217,9 +217,12 @@ const Answer = ({ answer, question, comments }) => {
                     Mark as Answer
                 </div>
 
-                <Badge variant="gold" hidden={!isAccepted}>
-                    Best Answer
-                </Badge>
+                {isAccepted ?
+                    <Badge variant="gold">
+                        Best Answer
+                    </Badge> : null
+                }
+
             </div>
 
             <div className="flex flex-col gap-2 px-8">
