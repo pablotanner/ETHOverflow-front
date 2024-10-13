@@ -130,6 +130,11 @@ console.log(question?.answers_list)
 
                 {
                     [...question?.answers_list]?.sort((a,b) => {
+                        // First make sure that any answer with "accepted=true" is always at the top
+                        if (a.accepted) {
+                            return -1
+                        }
+
                         if (sort === 'rating') {
                             return b?.total_vote_count - a?.total_vote_count
                         } else if (sort === 'oldest') {
