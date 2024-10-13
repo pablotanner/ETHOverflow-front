@@ -60,7 +60,7 @@ const SearchPage = () => {
 
             <div className="flex flex-col gap-6 mt-4 w-full">
                 {(!questionsIsError && questions?.length) ?
-                    [...questions].filter((a, b) => {
+                    [...questions].sort((a, b) => {
                         if (sort === 'rating') {
                             return b?.total_vote_count - a?.total_vote_count
                         } else if (sort === 'newest') {
