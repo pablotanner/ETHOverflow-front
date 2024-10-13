@@ -24,24 +24,28 @@ const SearchPage = () => {
     }
     return (
         <div className="gap-4 p-4 w-full">
-            <h1 className="flex flex-row flex-wrap gap-2 items-center justify-between ">
-                Question Search Results
-            </h1>
+            <div className="flex flex-row gap-4 justify-between">
 
-            <div className="flex flex-row gap-4 items-center">
-                Sort by:
-                <Tabs value={sort}>
-                    <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
-                        <TabsTrigger value="rating">Rating</TabsTrigger>
-                        <TabsTrigger value="oldest">Oldest</TabsTrigger>
-                        <TabsTrigger value="newest">Newest</TabsTrigger>
-                    </TabsList>
-                </Tabs>
+                <h1 className="flex flex-row flex-wrap gap-2 items-center justify-between ">
+                    Question Search Results
+                </h1>
+
+                <div className="flex flex-row gap-4 items-center">
+                    Sort by:
+                    <Tabs value={sort}>
+                        <TabsList onClick={(e) => setSort(e.target?.innerHTML?.toLowerCase())}>
+                            <TabsTrigger value="rating">Rating</TabsTrigger>
+                            <TabsTrigger value="oldest">Oldest</TabsTrigger>
+                            <TabsTrigger value="newest">Newest</TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </div>
             </div>
 
-            <div className="flex flex-col gap-6 mt-4 w-full" >
-                {!questionsIsError &&
-                    [...questions].filter((a,b) => {
+
+            <div className="flex flex-col gap-6 mt-4 w-full">
+                {(!questionsIsError && questions?.length) ?
+                    [...questions].filter((a, b) => {
                         if (sort === 'rating') {
                             return b?.total_vote_count - a?.total_vote_count
                         } else if (sort === 'oldest') {
@@ -51,7 +55,7 @@ const SearchPage = () => {
                         }
                     })?.map((question) => (
                         <Question key={question?.id} question={question}/>
-                    ))
+                    )) : null
                 }
 
                 {
