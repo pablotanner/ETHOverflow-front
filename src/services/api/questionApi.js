@@ -84,7 +84,7 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
         createComment: build.mutation({
             query: (data) => ({
@@ -114,7 +114,7 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
         createAnswer: build.mutation({
             query: (data) => ({
@@ -146,7 +146,7 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
         editAnswer: build.mutation({
             query: (data) => ({
@@ -178,7 +178,7 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
         editQuestion: build.mutation({
             query: (data) => ({
@@ -210,7 +210,7 @@ export const questionsApi = authApi.injectEndpoints({
                     })
             },
             // Invalidate question with id when a comment is created
-            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }],
+            invalidatesTags: (result, error, {question_id}) => [{ type: 'Question', id: question_id }, 'Questions', 'User']
         }),
         deleteQuestion: build.mutation({
             query: (question_id) => ({
