@@ -45,7 +45,7 @@ const HomePage = () => {
 
                 <div>
                     <Button
-                        className="bg-white p-3 dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+                        className="p-3 bg-[#4D7DBF] text-black border-neutral-200 text-white "
 
                         onClick={() => navigate("/questions/create")}
                     >

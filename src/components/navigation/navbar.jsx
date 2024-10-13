@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const MenuItem = ({children, link}) => {
         return (
-            <div className="hover:cursor-pointer text-black hover:text-slate-600 text-lg select-none font-semibold"
+            <div className="hover:cursor-pointer text-black hover:[#08407E] text-lg select-none font-semibold"
                 onClick={() => navigate(link)}
             >
                 {children}

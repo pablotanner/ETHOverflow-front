@@ -48,7 +48,7 @@ const Question = ({ question }) => {
     return (
         <div
             data-page={location.pathname !== "/questions/" + question?.id}
-            className="bg-slate-900 data-[page='true']:hover:bg-slate-800 data-[page='true']:hover:cursor-pointer
+            className="bg-slate-[#08407E] data-[page='true']:hover:[#4D7DBF] data-[page='true']:hover:cursor-pointer
             text-primary-foreground border-blue-500 rounded-lg p-3 gap-1 text-black flex flex-col relative"
             onClick={() => {
                 if (location.pathname !== "/questions/" + question?.id) {
