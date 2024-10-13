@@ -26,6 +26,17 @@ const Navbar = () => {
         )
     }
 
+    const handleSearch = (input) => {
+        const [query, tag] = input.split('#');
+        let url = `/search/${query.trim()}`;
+
+        if (tag) {
+            url += `/${tag.trim()}`;
+        }
+
+        navigate(url);
+    };
+
     return (
         <nav className="px-12 py-4 border-b border-b-gray-200 flex flex-row gap-6 md:gap-8 lg:gap-18 xl:gap-24 items-center justify-center w-full overflow-auto">
             <div>
@@ -42,7 +53,7 @@ const Navbar = () => {
                        // on Click enter submit
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && e.target.value) {
-                                 navigate(`/search/${e.target.value}`)
+                                handleSearch(e.target.value);
                             }
                           }}
 

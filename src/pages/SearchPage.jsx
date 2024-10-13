@@ -7,12 +7,16 @@ const SearchPage = () => {
 
     const params = useParams();
     const query = params.query;
+    const tag = params.tag;
 
     const {
         data: questions,
         isLoading,
         isError: questionsIsError
-    } = useGetQuestionSearchQuery(query);
+    } = useGetQuestionSearchQuery({
+        query: query,
+        tag: tag
+    });
 
 
     if (isLoading) {

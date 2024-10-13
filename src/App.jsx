@@ -30,7 +30,7 @@ function App() {
                         <Route path="/courses" element={<CoursesPage/>}/>
                         <Route path="/badges" element={<BadgesPage/>}/>
                         <Route path="/account" element={<AccountDisplay/>}/>
-                        <Route path="/search/:query" element={<SearchPage/>}/>
+                        <Route path="/search/:query?/:tag?" element={<SearchPage />} />
                     </Routes>
           </div>
 
