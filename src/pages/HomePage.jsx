@@ -34,6 +34,7 @@ const HomePage = () => {
         return new Date(Math.max(latestAnswerDate, latestCommentDate, new Date(question.date_answered)));
     };
 
+    console.log(questions)
 
     if (isLoading) {
         return <Spinner/>
@@ -76,7 +77,7 @@ const HomePage = () => {
                         if (sort === 'rating') {
                             return b?.total_vote_count - a?.total_vote_count;
                         } else if (sort === 'newest') {
-                            return new Date(b.date_answered) - new Date(a.date_answered);
+                            return new Date(b?.date_asked) - new Date(a?.date_asked);
                         } else if (sort === 'recent activity') {
                             // Sort by the most recent activity (answers or comments)
                             return getLastActivityDate(b) - getLastActivityDate(a);
