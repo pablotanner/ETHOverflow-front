@@ -2,12 +2,6 @@ import customFetchBase from "./customFetchBase.js";
 import {authApi} from "./authApi.js";
 import {toast} from "../../components/toast/use-toast.tsx";
 
-function getParams(params) {
-    return Object.keys(params)
-        .map(key => key + '=' + params[key])
-        .join('&');
-}
-
 export const questionsApi = authApi.injectEndpoints({
     reducerPath: 'questionsApi',
     baseQuery: customFetchBase,
@@ -27,8 +21,8 @@ export const questionsApi = authApi.injectEndpoints({
             providesTags: ['Questions']
         }),
         getQuestionSearch: build.query({
-            query: (params) => ({
-                url: `/search?${getParams(params)}`,
+            query: (query) => ({
+                url: `/search?query=${query}`,
                 method: 'GET',
             }),
 
